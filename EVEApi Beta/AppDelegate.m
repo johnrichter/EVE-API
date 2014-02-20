@@ -16,7 +16,11 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-   // Insert code here to initialize your application
+   self.mainWindowController =
+      [[MainWindowController alloc] initWithWindowNibName:@"MainWindowController"];
+   
+   [self.mainWindowController showWindow:nil];
+   [self.mainWindowController.window makeKeyAndOrderFront:nil];
 }
 
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "D2P.EVEApi_Beta" in the user's Application Support directory.

@@ -1,0 +1,20 @@
+TODO:
+
+- clean up objectbuilder with sub functions
+- create implied match parent name using xmlkeypath in object blueprint
+- parse the messageData attribute of ContactNotification
+- send contactNotifiction to my own toons to test
+- if api supports legacy api, make two init methods, one for each
+- calendar event attendees and upcoming calendar events are not loading correcly with legacy or new
+- eveerrorlist api was not completed on purpose.  the apis return the code and description
+- did not test eve contract bids api
+- did not test char/FacWarfareStats (need toon in Faction Warfare)
+- verify that all xml elements and attributes for all APIs are properly mapped to objects
+- kill log only works once... must destroy lots of ships to test... currently not tested.
+- I am not subscribed to any mailing lists, need to test the EVEMailingLists api
+- I have no research agents to test EVERearch, test it.
+- If the API returns 0 bytes of data, the program doesn't error out.  fix this
+  It can be forced by using multiple repeated characters in EVECharacterNameToId
+- I need to test CharacterNameToID and IdToName 250+ queries
+
+Note: from evecontracts on down, i did not put in the corect legacy information

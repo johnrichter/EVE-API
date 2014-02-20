@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2013-11-09 00:14:32</currentTime>
+  <result>
+    <rowset name="messages" key="messageID" columns="messageID,senderID,sentDate,title,toCorpOrAllianceID,toCharacterIDs,toListID">
+      <row messageID="330380654" senderID="91779534" sentDate="2013-09-09 13:56:00" title="Re: Re: Re: Charon" toCorpOrAllianceID="" toCharacterIDs="578285215" toListID="" senderTypeID="1377" />
+      <row messageID="326819064" senderID="578285215" sentDate="2013-06-25 12:47:00" title="FW: Compression" toCorpOrAllianceID="543622140" toCharacterIDs="" toListID="" senderTypeID="1384" />
+      <row messageID="326802133" senderID="90046444" sentDate="2013-06-25 01:47:00" title="Compression" toCorpOrAllianceID="543622140" toCharacterIDs="" toListID="" senderTypeID="1375" />
+      <row messageID="328904617" senderID="91779534" sentDate="2013-08-08 01:36:00" title="Charon" toCorpOrAllianceID="" toCharacterIDs="578285215" toListID="" senderTypeID="1377" />
+      <row messageID="326594971" senderID="91779534" sentDate="2013-06-21 00:50:00" title="Misplaced some items in Arvasaras" toCorpOrAllianceID="" toCharacterIDs="1012589246,1790555457,1721391323,90046444,162721720,179347106,1620152665,874898855" toListID="" senderTypeID="1377" />
+      <row messageID="325397507" senderID="1044737253" sentDate="2013-05-29 09:56:00" title="Re: Missing Blueprints" toCorpOrAllianceID="543622140" toCharacterIDs="1044737253" toListID="" senderTypeID="1384" />
+      <row messageID="325453113" senderID="235528292" sentDate="2013-05-30 09:27:00" title="Speaking of Blueprints" toCorpOrAllianceID="543622140" toCharacterIDs="" toListID="" senderTypeID="1378" />
+      <row messageID="324387266" senderID="91779534" sentDate="2013-05-12 02:13:00" title="FW: Whoops" toCorpOrAllianceID="" toCharacterIDs="874898855" toListID="" senderTypeID="1377" />
+      <row messageID="324466158" senderID="91779534" sentDate="2013-05-13 23:50:00" title="Stuff " toCorpOrAllianceID="" toCharacterIDs="91836741" toListID="" senderTypeID="1377" />
+      <row messageID="323667296" senderID="91779534" sentDate="2013-04-24 02:06:00" title="Whoops" toCorpOrAllianceID="" toCharacterIDs="578285215" toListID="" senderTypeID="1377" />
+      <row messageID="314039749" senderID="91779534" sentDate="2012-07-02 02:38:00" title="DNA" toCorpOrAllianceID="" toCharacterIDs="179347106" toListID="" senderTypeID="1377" />
+      <row messageID="314409047" senderID="91779534" sentDate="2012-07-18 00:40:00" title="Tengus" toCorpOrAllianceID="" toCharacterIDs="153571845" toListID="" senderTypeID="1377" />
+      <row messageID="330432459" senderID="91779534" sentDate="2013-09-10 21:48:00" title="Re: Charon" toCorpOrAllianceID="" toCharacterIDs="578285215" toListID="" senderTypeID="1377" />
+      <row messageID="330422931" senderID="578285215" sentDate="2013-09-10 17:04:00" title="Re: Re: Re: Re: Charon" toCorpOrAllianceID="" toCharacterIDs="91779534" toListID="" senderTypeID="1384" />
+      <row messageID="330369865" senderID="578285215" sentDate="2013-09-09 03:20:00" title="Re: Re: Charon" toCorpOrAllianceID="" toCharacterIDs="91779534" toListID="" senderTypeID="1384" />
+      <row messageID="330206301" senderID="91779534" sentDate="2013-09-05 00:32:00" title="Re: Charon" toCorpOrAllianceID="" toCharacterIDs="578285215" toListID="" senderTypeID="1377" />
+      <row messageID="329192138" senderID="91779534" sentDate="2013-08-13 20:04:00" title="Re: Re: Charon" toCorpOrAllianceID="" toCharacterIDs="578285215" toListID="" senderTypeID="1377" />
+      <row messageID="329160960" senderID="578285215" sentDate="2013-08-13 03:22:00" title="Re: Charon" toCorpOrAllianceID="" toCharacterIDs="91779534" toListID="" senderTypeID="1384" />
+      <row messageID="327914162" senderID="91779534" sentDate="2013-07-19 10:54:00" title="Can Inside a Lab" toCorpOrAllianceID="" toCharacterIDs="179347106,90046444,162721720,874898855" toListID="" senderTypeID="1377" />
+      <row messageID="326640854" senderID="91779534" sentDate="2013-06-21 23:47:00" title="Re: Misplaced some items in Arvasaras" toCorpOrAllianceID="" toCharacterIDs="90046444" toListID="" senderTypeID="1377" />
+      <row messageID="325637456" senderID="91779534" sentDate="2013-06-03 12:22:00" title="Re: My Stupid Probe" toCorpOrAllianceID="" toCharacterIDs="90046444,179347106" toListID="" senderTypeID="1377" />
+      <row messageID="325637390" senderID="91779534" sentDate="2013-06-03 12:21:00" title="My Stupid Probe" toCorpOrAllianceID="" toCharacterIDs="90046444,179347106" toListID="" senderTypeID="1377" />
+      <row messageID="325397239" senderID="1044737253" sentDate="2013-05-29 09:44:00" title="Missing Blueprints" toCorpOrAllianceID="543622140" toCharacterIDs="" toListID="" senderTypeID="1384" />
+      <row messageID="324385452" senderID="91779534" sentDate="2013-05-12 01:15:00" title="Arvasaras Fuel" toCorpOrAllianceID="" toCharacterIDs="92359395,1620152665,578285215" toListID="" senderTypeID="1377" />
+      <row messageID="322374276" senderID="91779534" sentDate="2013-03-22 23:36:00" title="Buy" toCorpOrAllianceID="" toCharacterIDs="92323562" toListID="" senderTypeID="1377" />
+      <row messageID="314048069" senderID="179347106" sentDate="2012-07-02 14:21:00" title="Re: Question" toCorpOrAllianceID="" toCharacterIDs="91779534" toListID="" senderTypeID="1375" />
+      <row messageID="314039812" senderID="91779534" sentDate="2012-07-02 02:41:00" title="Question" toCorpOrAllianceID="" toCharacterIDs="179347106" toListID="" senderTypeID="1377" />
+    </rowset>
+  </result>
+  <cachedUntil>2013-11-09 00:29:32</cachedUntil>
+</eveapi>

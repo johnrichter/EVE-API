@@ -19,6 +19,16 @@
 		CD6CE98118B5C08300E66CC9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6CE95D18B5C08300E66CC9 /* Cocoa.framework */; };
 		CD6CE98918B5C08300E66CC9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD6CE98718B5C08300E66CC9 /* InfoPlist.strings */; };
 		CD6CE98B18B5C08300E66CC9 /* EVEApi_BetaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6CE98A18B5C08300E66CC9 /* EVEApi_BetaTests.m */; };
+		CD6CE99718B5C0BC00E66CC9 /* RKValueTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6CE99618B5C0BC00E66CC9 /* RKValueTransformers.m */; };
+		CD6CE9A518B5C0C300E66CC9 /* XKObjectBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6CE99A18B5C0C300E66CC9 /* XKObjectBuilder.m */; };
+		CD6CE9A618B5C0C300E66CC9 /* XKObjectDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6CE99C18B5C0C300E66CC9 /* XKObjectDescriptor.m */; };
+		CD6CE9A718B5C0C300E66CC9 /* XKURLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6CE99E18B5C0C300E66CC9 /* XKURLRequestOperation.m */; };
+		CD6CE9A818B5C0C300E66CC9 /* XKXMLSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6CE9A018B5C0C300E66CC9 /* XKXMLSerialization.m */; };
+		CD6CE9A918B5C0C300E66CC9 /* XMLKitErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6CE9A318B5C0C300E66CC9 /* XMLKitErrors.m */; };
+		CD6CE9AC18B5C0E400E66CC9 /* EVEMailMessages.xml in Resources */ = {isa = PBXBuildFile; fileRef = CD6CE9AB18B5C0E400E66CC9 /* EVEMailMessages.xml */; };
+		CD6CE9B118B5C10300E66CC9 /* EveAPI-Notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = CD6CE9AD18B5C10300E66CC9 /* EveAPI-Notes.txt */; };
+		CD6CE9B218B5C10300E66CC9 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6CE9AF18B5C10300E66CC9 /* MainWindowController.m */; };
+		CD6CE9B318B5C10300E66CC9 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6CE9B018B5C10300E66CC9 /* MainWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +62,25 @@
 		CD6CE98618B5C08300E66CC9 /* EVEApi BetaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EVEApi BetaTests-Info.plist"; sourceTree = "<group>"; };
 		CD6CE98818B5C08300E66CC9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CD6CE98A18B5C08300E66CC9 /* EVEApi_BetaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EVEApi_BetaTests.m; sourceTree = "<group>"; };
+		CD6CE99518B5C0BC00E66CC9 /* RKValueTransformers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKValueTransformers.h; sourceTree = "<group>"; };
+		CD6CE99618B5C0BC00E66CC9 /* RKValueTransformers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKValueTransformers.m; sourceTree = "<group>"; };
+		CD6CE99918B5C0C300E66CC9 /* XKObjectBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XKObjectBuilder.h; sourceTree = "<group>"; };
+		CD6CE99A18B5C0C300E66CC9 /* XKObjectBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XKObjectBuilder.m; sourceTree = "<group>"; };
+		CD6CE99B18B5C0C300E66CC9 /* XKObjectDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XKObjectDescriptor.h; sourceTree = "<group>"; };
+		CD6CE99C18B5C0C300E66CC9 /* XKObjectDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XKObjectDescriptor.m; sourceTree = "<group>"; };
+		CD6CE99D18B5C0C300E66CC9 /* XKURLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XKURLRequestOperation.h; sourceTree = "<group>"; };
+		CD6CE99E18B5C0C300E66CC9 /* XKURLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XKURLRequestOperation.m; sourceTree = "<group>"; };
+		CD6CE99F18B5C0C300E66CC9 /* XKXMLSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XKXMLSerialization.h; sourceTree = "<group>"; };
+		CD6CE9A018B5C0C300E66CC9 /* XKXMLSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XKXMLSerialization.m; sourceTree = "<group>"; };
+		CD6CE9A118B5C0C300E66CC9 /* XMLKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLKit.h; sourceTree = "<group>"; };
+		CD6CE9A218B5C0C300E66CC9 /* XMLKitErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLKitErrors.h; sourceTree = "<group>"; };
+		CD6CE9A318B5C0C300E66CC9 /* XMLKitErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLKitErrors.m; sourceTree = "<group>"; };
+		CD6CE9A418B5C0C300E66CC9 /* XMLKitTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLKitTypes.h; sourceTree = "<group>"; };
+		CD6CE9AB18B5C0E400E66CC9 /* EVEMailMessages.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = EVEMailMessages.xml; sourceTree = "<group>"; };
+		CD6CE9AD18B5C10300E66CC9 /* EveAPI-Notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "EveAPI-Notes.txt"; sourceTree = "<group>"; };
+		CD6CE9AE18B5C10300E66CC9 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
+		CD6CE9AF18B5C10300E66CC9 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
+		CD6CE9B018B5C10300E66CC9 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +107,8 @@
 		CD6CE95118B5C08300E66CC9 = {
 			isa = PBXGroup;
 			children = (
+				CD6CE99818B5C0C300E66CC9 /* XMLKit */,
+				CD6CE99418B5C0BC00E66CC9 /* RestKit */,
 				CD6CE96318B5C08300E66CC9 /* EVEApi Beta */,
 				CD6CE98418B5C08300E66CC9 /* EVEApi BetaTests */,
 				CD6CE95C18B5C08300E66CC9 /* Frameworks */,
@@ -119,9 +150,13 @@
 			children = (
 				CD6CE96F18B5C08300E66CC9 /* AppDelegate.h */,
 				CD6CE97018B5C08300E66CC9 /* AppDelegate.m */,
-				CD6CE97218B5C08300E66CC9 /* MainMenu.xib */,
-				CD6CE97818B5C08300E66CC9 /* Images.xcassets */,
+				CD6CE9AD18B5C10300E66CC9 /* EveAPI-Notes.txt */,
 				CD6CE97518B5C08300E66CC9 /* EVEApi_Beta.xcdatamodeld */,
+				CD6CE97818B5C08300E66CC9 /* Images.xcassets */,
+				CD6CE97218B5C08300E66CC9 /* MainMenu.xib */,
+				CD6CE9AE18B5C10300E66CC9 /* MainWindowController.h */,
+				CD6CE9AF18B5C10300E66CC9 /* MainWindowController.m */,
+				CD6CE9B018B5C10300E66CC9 /* MainWindowController.xib */,
 				CD6CE96418B5C08300E66CC9 /* Supporting Files */,
 			);
 			path = "EVEApi Beta";
@@ -142,6 +177,7 @@
 		CD6CE98418B5C08300E66CC9 /* EVEApi BetaTests */ = {
 			isa = PBXGroup;
 			children = (
+				CD6CE9AA18B5C0E400E66CC9 /* Test XML */,
 				CD6CE98A18B5C08300E66CC9 /* EVEApi_BetaTests.m */,
 				CD6CE98518B5C08300E66CC9 /* Supporting Files */,
 			);
@@ -155,6 +191,42 @@
 				CD6CE98718B5C08300E66CC9 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CD6CE99418B5C0BC00E66CC9 /* RestKit */ = {
+			isa = PBXGroup;
+			children = (
+				CD6CE99518B5C0BC00E66CC9 /* RKValueTransformers.h */,
+				CD6CE99618B5C0BC00E66CC9 /* RKValueTransformers.m */,
+			);
+			path = RestKit;
+			sourceTree = "<group>";
+		};
+		CD6CE99818B5C0C300E66CC9 /* XMLKit */ = {
+			isa = PBXGroup;
+			children = (
+				CD6CE99918B5C0C300E66CC9 /* XKObjectBuilder.h */,
+				CD6CE99A18B5C0C300E66CC9 /* XKObjectBuilder.m */,
+				CD6CE99B18B5C0C300E66CC9 /* XKObjectDescriptor.h */,
+				CD6CE99C18B5C0C300E66CC9 /* XKObjectDescriptor.m */,
+				CD6CE99D18B5C0C300E66CC9 /* XKURLRequestOperation.h */,
+				CD6CE99E18B5C0C300E66CC9 /* XKURLRequestOperation.m */,
+				CD6CE99F18B5C0C300E66CC9 /* XKXMLSerialization.h */,
+				CD6CE9A018B5C0C300E66CC9 /* XKXMLSerialization.m */,
+				CD6CE9A118B5C0C300E66CC9 /* XMLKit.h */,
+				CD6CE9A218B5C0C300E66CC9 /* XMLKitErrors.h */,
+				CD6CE9A318B5C0C300E66CC9 /* XMLKitErrors.m */,
+				CD6CE9A418B5C0C300E66CC9 /* XMLKitTypes.h */,
+			);
+			path = XMLKit;
+			sourceTree = "<group>";
+		};
+		CD6CE9AA18B5C0E400E66CC9 /* Test XML */ = {
+			isa = PBXGroup;
+			children = (
+				CD6CE9AB18B5C0E400E66CC9 /* EVEMailMessages.xml */,
+			);
+			path = "Test XML";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,7 +307,9 @@
 			files = (
 				CD6CE96818B5C08300E66CC9 /* InfoPlist.strings in Resources */,
 				CD6CE97918B5C08300E66CC9 /* Images.xcassets in Resources */,
+				CD6CE9B118B5C10300E66CC9 /* EveAPI-Notes.txt in Resources */,
 				CD6CE96E18B5C08300E66CC9 /* Credits.rtf in Resources */,
+				CD6CE9B318B5C10300E66CC9 /* MainWindowController.xib in Resources */,
 				CD6CE97418B5C08300E66CC9 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD6CE98918B5C08300E66CC9 /* InfoPlist.strings in Resources */,
+				CD6CE9AC18B5C0E400E66CC9 /* EVEMailMessages.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,9 +330,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD6CE9B218B5C10300E66CC9 /* MainWindowController.m in Sources */,
+				CD6CE99718B5C0BC00E66CC9 /* RKValueTransformers.m in Sources */,
+				CD6CE9A818B5C0C300E66CC9 /* XKXMLSerialization.m in Sources */,
+				CD6CE9A518B5C0C300E66CC9 /* XKObjectBuilder.m in Sources */,
+				CD6CE9A918B5C0C300E66CC9 /* XMLKitErrors.m in Sources */,
 				CD6CE97718B5C08300E66CC9 /* EVEApi_Beta.xcdatamodeld in Sources */,
 				CD6CE97118B5C08300E66CC9 /* AppDelegate.m in Sources */,
+				CD6CE9A618B5C0C300E66CC9 /* XKObjectDescriptor.m in Sources */,
 				CD6CE96A18B5C08300E66CC9 /* main.m in Sources */,
+				CD6CE9A718B5C0C300E66CC9 /* XKURLRequestOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
