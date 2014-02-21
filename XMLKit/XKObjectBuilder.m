@@ -128,7 +128,7 @@ UsingElementChildren:(NSArray *)elementChildren;
       NSError *error = [NSError errorWithDomain:XKErrorDomain
                                            code:kXKObjectBuilderErrorMissingParameters
                                        userInfo:userInfo];
-      self.failureBlock(nil, error);
+      self.failureBlock(error);
    }
    
    NSError *xmlSerializeError = nil;
@@ -137,7 +137,7 @@ UsingElementChildren:(NSArray *)elementChildren;
    
    if (xmlSerializeError)
    {
-      self.failureBlock(nil, xmlSerializeError);
+      self.failureBlock(xmlSerializeError);
    }
    
    if (!self.xmlMap || [self.xmlMap count] == 0)
@@ -149,7 +149,7 @@ UsingElementChildren:(NSArray *)elementChildren;
       NSError *error = [NSError errorWithDomain:XKErrorDomain
                                            code:kXKObjectBuilderErrorXMLDataNotFound
                                        userInfo:userInfo];
-      self.failureBlock(nil, error);
+      self.failureBlock(error);
    }
    
    if ([self.xmlMap count] > 1)
@@ -161,7 +161,7 @@ UsingElementChildren:(NSArray *)elementChildren;
       NSError *error = [NSError errorWithDomain:XKErrorDomain
                                            code:kXKObjectBuilderErrorImproperXMLMapStructure
                                        userInfo:userInfo];
-      self.failureBlock(nil, error);
+      self.failureBlock(error);
    }
    
    //
@@ -211,7 +211,7 @@ UsingElementChildren:(NSArray *)elementChildren;
             NSError *error = [NSError errorWithDomain:XKErrorDomain
                                                  code:kXKObjectBuilderErrorNonUniqueDescriptorList
                                              userInfo:userInfo];
-            self.failureBlock(nil, error);
+            self.failureBlock(error);
          }
       }
       

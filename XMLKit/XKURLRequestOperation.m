@@ -112,7 +112,7 @@
       NSError *error = [NSError errorWithDomain:XKErrorDomain
                                            code:kXKURLRequestOperationErrorInvalidURL
                                        userInfo:userInfo];
-      self.failureBlock(nil, error);
+      self.failureBlock(error);
    }
    
    if (!self.parameters)
@@ -131,7 +131,7 @@
       NSError *error = [NSError errorWithDomain:XKErrorDomain
                                            code:kXKURLRequestOperationErrorMissingObjectDescriptors
                                        userInfo:userInfo];
-      self.failureBlock(nil, error);
+      self.failureBlock(error);
    }
 
    //
@@ -203,7 +203,7 @@
       NSError *error = [NSError errorWithDomain:XKErrorDomain
                                            code:kXKURLRequestOperationErrorURLEncode
                                        userInfo:userInfo];
-      self.failureBlock(nil, error);
+      self.failureBlock(error);
    }
    
    return encoded;

@@ -29,6 +29,15 @@
 		CD6CE9B118B5C10300E66CC9 /* EveAPI-Notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = CD6CE9AD18B5C10300E66CC9 /* EveAPI-Notes.txt */; };
 		CD6CE9B218B5C10300E66CC9 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6CE9AF18B5C10300E66CC9 /* MainWindowController.m */; };
 		CD6CE9B318B5C10300E66CC9 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD6CE9B018B5C10300E66CC9 /* MainWindowController.xib */; };
+		CD6D120D18B6E77C00DCECEC /* EVEAccountCharacters.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D120C18B6E77C00DCECEC /* EVEAccountCharacters.m */; };
+		CD6D121218B6E9C900DCECEC /* EVEApiObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D120F18B6E9C900DCECEC /* EVEApiObject.m */; };
+		CD6D121318B6E9C900DCECEC /* EVEObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D121118B6E9C900DCECEC /* EVEObject.m */; };
+		CD6D121E18B6EAE900DCECEC /* EVEApi.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D121518B6EAE900DCECEC /* EVEApi.m */; };
+		CD6D121F18B6EAE900DCECEC /* EVEBool.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D121718B6EAE900DCECEC /* EVEBool.m */; };
+		CD6D122018B6EAE900DCECEC /* EVEDate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D121918B6EAE900DCECEC /* EVEDate.m */; };
+		CD6D122118B6EAE900DCECEC /* EVENumber.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D121B18B6EAE900DCECEC /* EVENumber.m */; };
+		CD6D122218B6EAE900DCECEC /* EVEString.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D121D18B6EAE900DCECEC /* EVEString.m */; };
+		CD6D122518B6EB3800DCECEC /* EVEError.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D122418B6EB3800DCECEC /* EVEError.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +90,24 @@
 		CD6CE9AE18B5C10300E66CC9 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		CD6CE9AF18B5C10300E66CC9 /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
 		CD6CE9B018B5C10300E66CC9 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
+		CD6D120B18B6E77C00DCECEC /* EVEAccountCharacters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EVEAccountCharacters.h; path = "EVE API Interfaces/Account/EVEAccountCharacters.h"; sourceTree = "<group>"; };
+		CD6D120C18B6E77C00DCECEC /* EVEAccountCharacters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EVEAccountCharacters.m; path = "EVE API Interfaces/Account/EVEAccountCharacters.m"; sourceTree = "<group>"; };
+		CD6D120E18B6E9C900DCECEC /* EVEApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EVEApiObject.h; path = "EVE API Objects/EVE Types/EVEApiObject.h"; sourceTree = "<group>"; };
+		CD6D120F18B6E9C900DCECEC /* EVEApiObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EVEApiObject.m; path = "EVE API Objects/EVE Types/EVEApiObject.m"; sourceTree = "<group>"; };
+		CD6D121018B6E9C900DCECEC /* EVEObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EVEObject.h; path = "EVE API Objects/EVE Types/EVEObject.h"; sourceTree = "<group>"; };
+		CD6D121118B6E9C900DCECEC /* EVEObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EVEObject.m; path = "EVE API Objects/EVE Types/EVEObject.m"; sourceTree = "<group>"; };
+		CD6D121418B6EAE900DCECEC /* EVEApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EVEApi.h; path = "EVE API Objects/EVE Types/EVEApi.h"; sourceTree = "<group>"; };
+		CD6D121518B6EAE900DCECEC /* EVEApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EVEApi.m; path = "EVE API Objects/EVE Types/EVEApi.m"; sourceTree = "<group>"; };
+		CD6D121618B6EAE900DCECEC /* EVEBool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EVEBool.h; path = "EVE API Objects/EVE Types/EVEBool.h"; sourceTree = "<group>"; };
+		CD6D121718B6EAE900DCECEC /* EVEBool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EVEBool.m; path = "EVE API Objects/EVE Types/EVEBool.m"; sourceTree = "<group>"; };
+		CD6D121818B6EAE900DCECEC /* EVEDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EVEDate.h; path = "EVE API Objects/EVE Types/EVEDate.h"; sourceTree = "<group>"; };
+		CD6D121918B6EAE900DCECEC /* EVEDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EVEDate.m; path = "EVE API Objects/EVE Types/EVEDate.m"; sourceTree = "<group>"; };
+		CD6D121A18B6EAE900DCECEC /* EVENumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EVENumber.h; path = "EVE API Objects/EVE Types/EVENumber.h"; sourceTree = "<group>"; };
+		CD6D121B18B6EAE900DCECEC /* EVENumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EVENumber.m; path = "EVE API Objects/EVE Types/EVENumber.m"; sourceTree = "<group>"; };
+		CD6D121C18B6EAE900DCECEC /* EVEString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EVEString.h; path = "EVE API Objects/EVE Types/EVEString.h"; sourceTree = "<group>"; };
+		CD6D121D18B6EAE900DCECEC /* EVEString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EVEString.m; path = "EVE API Objects/EVE Types/EVEString.m"; sourceTree = "<group>"; };
+		CD6D122318B6EB3800DCECEC /* EVEError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EVEError.h; path = "EVE API Objects/EVE Types/EVEError.h"; sourceTree = "<group>"; };
+		CD6D122418B6EB3800DCECEC /* EVEError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EVEError.m; path = "EVE API Objects/EVE Types/EVEError.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,12 +134,14 @@
 		CD6CE95118B5C08300E66CC9 = {
 			isa = PBXGroup;
 			children = (
-				CD6CE99818B5C0C300E66CC9 /* XMLKit */,
-				CD6CE99418B5C0BC00E66CC9 /* RestKit */,
-				CD6CE96318B5C08300E66CC9 /* EVEApi Beta */,
-				CD6CE98418B5C08300E66CC9 /* EVEApi BetaTests */,
+				CD6CE96318B5C08300E66CC9 /* Application  */,
+				CD6CE98418B5C08300E66CC9 /* Application Tests */,
+				CD6D11EA18B6D57E00DCECEC /* EVE API Interfaces */,
+				CD6D11EB18B6D5B100DCECEC /* EVE API Objects */,
 				CD6CE95C18B5C08300E66CC9 /* Frameworks */,
 				CD6CE95B18B5C08300E66CC9 /* Products */,
+				CD6CE99418B5C0BC00E66CC9 /* RestKit */,
+				CD6CE99818B5C0C300E66CC9 /* XMLKit */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,7 +174,7 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		CD6CE96318B5C08300E66CC9 /* EVEApi Beta */ = {
+		CD6CE96318B5C08300E66CC9 /* Application  */ = {
 			isa = PBXGroup;
 			children = (
 				CD6CE96F18B5C08300E66CC9 /* AppDelegate.h */,
@@ -159,6 +188,7 @@
 				CD6CE9B018B5C10300E66CC9 /* MainWindowController.xib */,
 				CD6CE96418B5C08300E66CC9 /* Supporting Files */,
 			);
+			name = "Application ";
 			path = "EVEApi Beta";
 			sourceTree = "<group>";
 		};
@@ -174,13 +204,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CD6CE98418B5C08300E66CC9 /* EVEApi BetaTests */ = {
+		CD6CE98418B5C08300E66CC9 /* Application Tests */ = {
 			isa = PBXGroup;
 			children = (
 				CD6CE9AA18B5C0E400E66CC9 /* Test XML */,
 				CD6CE98A18B5C08300E66CC9 /* EVEApi_BetaTests.m */,
 				CD6CE98518B5C08300E66CC9 /* Supporting Files */,
 			);
+			name = "Application Tests";
 			path = "EVEApi BetaTests";
 			sourceTree = "<group>";
 		};
@@ -227,6 +258,246 @@
 				CD6CE9AB18B5C0E400E66CC9 /* EVEMailMessages.xml */,
 			);
 			path = "Test XML";
+			sourceTree = "<group>";
+		};
+		CD6D11EA18B6D57E00DCECEC /* EVE API Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				CD6D11ED18B6D61C00DCECEC /* Account */,
+				CD6D11EC18B6D60100DCECEC /* API */,
+				CD6D11EE18B6D63700DCECEC /* Character */,
+				CD6D11EF18B6D63F00DCECEC /* Character/Corporation */,
+				CD6D11F018B6D64300DCECEC /* Corporation */,
+				CD6D11F118B6D64600DCECEC /* EVE */,
+				CD6D11F218B6D64800DCECEC /* Map */,
+				CD6D11F318B6D64A00DCECEC /* Misc */,
+				CD6D11F418B6D64C00DCECEC /* Server */,
+			);
+			name = "EVE API Interfaces";
+			sourceTree = "<group>";
+		};
+		CD6D11EB18B6D5B100DCECEC /* EVE API Objects */ = {
+			isa = PBXGroup;
+			children = (
+				CD6D120518B6D71200DCECEC /* Account */,
+				CD6D11F518B6D68900DCECEC /* Alliance */,
+				CD6D11F818B6D69300DCECEC /* Assets/Items */,
+				CD6D11F918B6D69500DCECEC /* Calendar */,
+				CD6D11F618B6D68F00DCECEC /* Character */,
+				CD6D11FB18B6D69900DCECEC /* Contacts */,
+				CD6D11FC18B6D69B00DCECEC /* Contracts */,
+				CD6D11FD18B6D69F00DCECEC /* Corporation */,
+				CD6D11FA18B6D69700DCECEC /* EVE */,
+				CD6D11F718B6D69100DCECEC /* EVE Types */,
+				CD6D11FE18B6D6A100DCECEC /* Faction Warfare */,
+				CD6D120218B6D6A800DCECEC /* Financial */,
+				CD6D11FF18B6D6A300DCECEC /* Industry */,
+				CD6D120018B6D6A400DCECEC /* Kills */,
+				CD6D120118B6D6A600DCECEC /* Mail */,
+				CD6D120318B6D6AA00DCECEC /* Ships */,
+				CD6D120418B6D6AC00DCECEC /* Skills */,
+			);
+			name = "EVE API Objects";
+			sourceTree = "<group>";
+		};
+		CD6D11EC18B6D60100DCECEC /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		CD6D11ED18B6D61C00DCECEC /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				CD6D120B18B6E77C00DCECEC /* EVEAccountCharacters.h */,
+				CD6D120C18B6E77C00DCECEC /* EVEAccountCharacters.m */,
+			);
+			name = Account;
+			sourceTree = "<group>";
+		};
+		CD6D11EE18B6D63700DCECEC /* Character */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Character;
+			sourceTree = "<group>";
+		};
+		CD6D11EF18B6D63F00DCECEC /* Character/Corporation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Character/Corporation;
+			sourceTree = "<group>";
+		};
+		CD6D11F018B6D64300DCECEC /* Corporation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Corporation;
+			sourceTree = "<group>";
+		};
+		CD6D11F118B6D64600DCECEC /* EVE */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = EVE;
+			sourceTree = "<group>";
+		};
+		CD6D11F218B6D64800DCECEC /* Map */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		CD6D11F318B6D64A00DCECEC /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Misc;
+			sourceTree = "<group>";
+		};
+		CD6D11F418B6D64C00DCECEC /* Server */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Server;
+			sourceTree = "<group>";
+		};
+		CD6D11F518B6D68900DCECEC /* Alliance */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Alliance;
+			sourceTree = "<group>";
+		};
+		CD6D11F618B6D68F00DCECEC /* Character */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Character;
+			sourceTree = "<group>";
+		};
+		CD6D11F718B6D69100DCECEC /* EVE Types */ = {
+			isa = PBXGroup;
+			children = (
+				CD6D120E18B6E9C900DCECEC /* EVEApiObject.h */,
+				CD6D120F18B6E9C900DCECEC /* EVEApiObject.m */,
+				CD6D122318B6EB3800DCECEC /* EVEError.h */,
+				CD6D122418B6EB3800DCECEC /* EVEError.m */,
+				CD6D121418B6EAE900DCECEC /* EVEApi.h */,
+				CD6D121518B6EAE900DCECEC /* EVEApi.m */,
+				CD6D121618B6EAE900DCECEC /* EVEBool.h */,
+				CD6D121718B6EAE900DCECEC /* EVEBool.m */,
+				CD6D121818B6EAE900DCECEC /* EVEDate.h */,
+				CD6D121918B6EAE900DCECEC /* EVEDate.m */,
+				CD6D121A18B6EAE900DCECEC /* EVENumber.h */,
+				CD6D121B18B6EAE900DCECEC /* EVENumber.m */,
+				CD6D121C18B6EAE900DCECEC /* EVEString.h */,
+				CD6D121D18B6EAE900DCECEC /* EVEString.m */,
+				CD6D121018B6E9C900DCECEC /* EVEObject.h */,
+				CD6D121118B6E9C900DCECEC /* EVEObject.m */,
+			);
+			name = "EVE Types";
+			sourceTree = "<group>";
+		};
+		CD6D11F818B6D69300DCECEC /* Assets/Items */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Assets/Items;
+			sourceTree = "<group>";
+		};
+		CD6D11F918B6D69500DCECEC /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Calendar;
+			sourceTree = "<group>";
+		};
+		CD6D11FA18B6D69700DCECEC /* EVE */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = EVE;
+			sourceTree = "<group>";
+		};
+		CD6D11FB18B6D69900DCECEC /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Contacts;
+			sourceTree = "<group>";
+		};
+		CD6D11FC18B6D69B00DCECEC /* Contracts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Contracts;
+			sourceTree = "<group>";
+		};
+		CD6D11FD18B6D69F00DCECEC /* Corporation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Corporation;
+			sourceTree = "<group>";
+		};
+		CD6D11FE18B6D6A100DCECEC /* Faction Warfare */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Faction Warfare";
+			sourceTree = "<group>";
+		};
+		CD6D11FF18B6D6A300DCECEC /* Industry */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Industry;
+			sourceTree = "<group>";
+		};
+		CD6D120018B6D6A400DCECEC /* Kills */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Kills;
+			sourceTree = "<group>";
+		};
+		CD6D120118B6D6A600DCECEC /* Mail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Mail;
+			sourceTree = "<group>";
+		};
+		CD6D120218B6D6A800DCECEC /* Financial */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Financial;
+			sourceTree = "<group>";
+		};
+		CD6D120318B6D6AA00DCECEC /* Ships */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Ships;
+			sourceTree = "<group>";
+		};
+		CD6D120418B6D6AC00DCECEC /* Skills */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Skills;
+			sourceTree = "<group>";
+		};
+		CD6D120518B6D71200DCECEC /* Account */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Account;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,14 +602,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD6CE9B218B5C10300E66CC9 /* MainWindowController.m in Sources */,
+				CD6D121F18B6EAE900DCECEC /* EVEBool.m in Sources */,
+				CD6D122018B6EAE900DCECEC /* EVEDate.m in Sources */,
+				CD6D121E18B6EAE900DCECEC /* EVEApi.m in Sources */,
 				CD6CE99718B5C0BC00E66CC9 /* RKValueTransformers.m in Sources */,
 				CD6CE9A818B5C0C300E66CC9 /* XKXMLSerialization.m in Sources */,
+				CD6D122518B6EB3800DCECEC /* EVEError.m in Sources */,
 				CD6CE9A518B5C0C300E66CC9 /* XKObjectBuilder.m in Sources */,
 				CD6CE9A918B5C0C300E66CC9 /* XMLKitErrors.m in Sources */,
 				CD6CE97718B5C08300E66CC9 /* EVEApi_Beta.xcdatamodeld in Sources */,
+				CD6D122218B6EAE900DCECEC /* EVEString.m in Sources */,
+				CD6D121318B6E9C900DCECEC /* EVEObject.m in Sources */,
+				CD6D122118B6EAE900DCECEC /* EVENumber.m in Sources */,
 				CD6CE97118B5C08300E66CC9 /* AppDelegate.m in Sources */,
 				CD6CE9A618B5C0C300E66CC9 /* XKObjectDescriptor.m in Sources */,
 				CD6CE96A18B5C08300E66CC9 /* main.m in Sources */,
+				CD6D120D18B6E77C00DCECEC /* EVEAccountCharacters.m in Sources */,
+				CD6D121218B6E9C900DCECEC /* EVEApiObject.m in Sources */,
 				CD6CE9A718B5C0C300E66CC9 /* XKURLRequestOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -550,6 +830,7 @@
 				CD6CE99018B5C08300E66CC9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CD6CE99118B5C08300E66CC9 /* Build configuration list for PBXNativeTarget "EVEApi BetaTests" */ = {
 			isa = XCConfigurationList;
@@ -558,6 +839,7 @@
 				CD6CE99318B5C08300E66CC9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

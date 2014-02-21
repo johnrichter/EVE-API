@@ -15,5 +15,5 @@
 typedef void (^XKSuccessBlock)(NSDictionary *, NSError *);
 
 // Code block that is called when XMLKit encounters an error
-// XKFailureBlock({@"Built Object Class Name":@[Built, objects, ...], error)
-typedef void (^XKFailureBlock)(NSDictionary *, NSError *);
+// XKFailureBlock(error)
+typedef void (^XKFailureBlock)(NSError *);
