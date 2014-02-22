@@ -12,8 +12,8 @@
 @interface EVECharacter : EVEObject
 
 @property (strong) NSNumber *characterId;
-@property (strong, nonatomic) NSString *characterName;
+@property (strong) NSString *characterName;
 @property (strong) NSNumber *corporationId;
-@property (strong, nonatomic) NSString *corporationName;
+@property (strong) NSString *corporationName;
 
 @end

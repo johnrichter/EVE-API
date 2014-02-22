@@ -43,7 +43,7 @@
    [xmlParser setShouldResolveExternalEntities:NO];
    
    BOOL parseSuccess = [xmlParser parse];
-   if (!parseSuccess)
+   if (!parseSuccess && error)
    {
       *error = [xmlParser parserError];
    }
@@ -62,7 +62,7 @@
    [xmlParser setShouldResolveExternalEntities:NO];
    
    BOOL parseSuccess = [xmlParser parse];
-   if (!parseSuccess)
+   if (!parseSuccess && error)
    {
       *error = [xmlParser parserError];
    }
