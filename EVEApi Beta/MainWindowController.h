@@ -8,10 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-//// Account APIs
+// Account APIs
 //#import "EVEApiKeyInformation.h"
 //#import "EVEAccountStatus.h"
-//#import "EVEAccountCharacters.h"
+#import "EVEAccountCharacters.h"
 //
 //// Character APIs
 //#import "EVEAccountBalance.h"
@@ -76,7 +76,7 @@
 
 //@property (strong) EVEApiKeyInformation *apiKeyInfo;
 //@property (strong) EVEAccountStatus *accountStatus;
-//@property (strong) EVEAccountCharacters *accountCharacters;
+@property (strong) EVEAccountCharacters *accountCharacters;
 //@property (strong) EVEAccountBalance *accountBalance;
 //@property (strong) EVEAssetList *assetList;
 //@property (strong) EVEUpcomingCalendarEvents *upcomingEvents;

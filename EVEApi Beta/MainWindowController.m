@@ -19,7 +19,7 @@
    self = [super initWithWindow:window];
    if (self)
    {
-//      // Character APIs
+      // Character APIs
 //      [[NSNotificationCenter defaultCenter] addObserver:self
 //                                             selector:@selector(EVEApiKeyInformationDidLoad:)
 //                                                 name:NSStringFromClass([EVEApiKeyInformation class])
@@ -29,12 +29,12 @@
 //                                             selector:@selector(EVEAccountStatusDidLoad:)
 //                                                 name:NSStringFromClass([EVEAccountStatus class])
 //                                               object:nil];
-//
-//      [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(EVEAccountCharactersDidLoad:)
-//                                                 name:NSStringFromClass([EVEAccountCharacters class])
-//                                               object:nil];
-//
+
+      [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(EVEAccountCharactersDidLoad:)
+                                                 name:NSStringFromClass([EVEAccountCharacters class])
+                                               object:nil];
+
 //      [[NSNotificationCenter defaultCenter] addObserver:self
 //                                             selector:@selector(EVEAccountBalanceDidLoad:)
 //                                                 name:NSStringFromClass([EVEAccountBalance class])
@@ -311,11 +311,11 @@
 //   self.accountStatus = [[EVEAccountStatus alloc] initWithEveKeyId:keyId VCode:vCode];
 //   
 //   //[self.accountStatus queryTheApi];
-//   
-//   self.accountCharacters = [[EVEAccountCharacters alloc] initWithEveKeyId:keyId
-//                                                                     VCode:vCode];
-//   //[self.accountCharacters queryTheApi];
-//   
+   
+   self.accountCharacters = [[EVEAccountCharacters alloc] initWithEveKeyId:keyId
+                                                                     VCode:vCode];
+   [self.accountCharacters performRequest];
+   
 //   self.accountBalance = [[EVEAccountBalance alloc] initWithEveKeyId:keyId
 //                                                               VCode:vCode
 //                                                         CharacterId:minosId];
@@ -547,15 +547,15 @@
 //   [newStr appendFormat:@"%@\n", self.accountStatus];
 //   [self.xmlTextView setString:newStr];
 //}
-//
-//-(void)EVEAccountCharactersDidLoad:(NSNotification *)notification
-//{
-//   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
-//   [newStr appendString:self.xmlTextView.string];
-//   [newStr appendFormat:@"%@\n", self.accountCharacters];
-//   [self.xmlTextView setString:newStr];
-//}
-//
+
+-(void)EVEAccountCharactersDidLoad:(NSNotification *)notification
+{
+   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
+   [newStr appendString:self.xmlTextView.string];
+   [newStr appendFormat:@"%@\n", self.accountCharacters];
+   [self.xmlTextView setString:newStr];
+}
+
 //-(void)EVEAccountBalanceDidLoad:(NSNotification *)notification
 //{
 //   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];

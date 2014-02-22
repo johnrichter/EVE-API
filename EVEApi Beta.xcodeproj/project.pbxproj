@@ -38,6 +38,7 @@
 		CD6D122118B6EAE900DCECEC /* EVENumber.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D121B18B6EAE900DCECEC /* EVENumber.m */; };
 		CD6D122218B6EAE900DCECEC /* EVEString.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D121D18B6EAE900DCECEC /* EVEString.m */; };
 		CD6D122518B6EB3800DCECEC /* EVEError.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D122418B6EB3800DCECEC /* EVEError.m */; };
+		CDEF028E18B7EC33001BFD20 /* EVECharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = CDEF028D18B7EC33001BFD20 /* EVECharacter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,8 @@
 		CD6D121D18B6EAE900DCECEC /* EVEString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EVEString.m; path = "EVE API Objects/EVE Types/EVEString.m"; sourceTree = "<group>"; };
 		CD6D122318B6EB3800DCECEC /* EVEError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EVEError.h; path = "EVE API Objects/EVE Types/EVEError.h"; sourceTree = "<group>"; };
 		CD6D122418B6EB3800DCECEC /* EVEError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EVEError.m; path = "EVE API Objects/EVE Types/EVEError.m"; sourceTree = "<group>"; };
+		CDEF028C18B7EC33001BFD20 /* EVECharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EVECharacter.h; path = "EVE API Objects/Character/EVECharacter.h"; sourceTree = "<group>"; };
+		CDEF028D18B7EC33001BFD20 /* EVECharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EVECharacter.m; path = "EVE API Objects/Character/EVECharacter.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,7 +290,7 @@
 				CD6D11FB18B6D69900DCECEC /* Contacts */,
 				CD6D11FC18B6D69B00DCECEC /* Contracts */,
 				CD6D11FD18B6D69F00DCECEC /* Corporation */,
-				CD6D11FA18B6D69700DCECEC /* EVE */,
+				CD6D11FA18B6D69700DCECEC /* EVE Statistics */,
 				CD6D11F718B6D69100DCECEC /* EVE Types */,
 				CD6D11FE18B6D6A100DCECEC /* Faction Warfare */,
 				CD6D120218B6D6A800DCECEC /* Financial */,
@@ -375,6 +378,8 @@
 		CD6D11F618B6D68F00DCECEC /* Character */ = {
 			isa = PBXGroup;
 			children = (
+				CDEF028C18B7EC33001BFD20 /* EVECharacter.h */,
+				CDEF028D18B7EC33001BFD20 /* EVECharacter.m */,
 			);
 			name = Character;
 			sourceTree = "<group>";
@@ -416,11 +421,11 @@
 			name = Calendar;
 			sourceTree = "<group>";
 		};
-		CD6D11FA18B6D69700DCECEC /* EVE */ = {
+		CD6D11FA18B6D69700DCECEC /* EVE Statistics */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = EVE;
+			name = "EVE Statistics";
 			sourceTree = "<group>";
 		};
 		CD6D11FB18B6D69900DCECEC /* Contacts */ = {
@@ -603,6 +608,7 @@
 			files = (
 				CD6CE9B218B5C10300E66CC9 /* MainWindowController.m in Sources */,
 				CD6D121F18B6EAE900DCECEC /* EVEBool.m in Sources */,
+				CDEF028E18B7EC33001BFD20 /* EVECharacter.m in Sources */,
 				CD6D122018B6EAE900DCECEC /* EVEDate.m in Sources */,
 				CD6D121E18B6EAE900DCECEC /* EVEApi.m in Sources */,
 				CD6CE99718B5C0BC00E66CC9 /* RKValueTransformers.m in Sources */,

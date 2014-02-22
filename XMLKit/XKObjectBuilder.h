@@ -15,17 +15,8 @@
 // Holds copy of the callers XML Data
 @property (strong) NSData *xmlData;
 
-// Storage for the XKXMLSerialized XML map
-@property (strong) NSDictionary *xmlMap;
-
 // Holds a copy of all descriptors from the caller
 @property (strong) NSArray *objectDescriptors;
-
-// Holds the elementName -> @[ObjectDescriptor] list
-@property (strong) NSDictionary *elementNameToDescriptorMap;
-
-// Storage for fully built objects {@"ClassName":@[Built, Objects]}
-@property (strong) NSMutableDictionary *builtObjects;
 
 // Caller's 'operation succeeded' block
 @property (copy) XKSuccessBlock successBlock;

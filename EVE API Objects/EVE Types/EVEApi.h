@@ -20,6 +20,7 @@
 @property (strong) EVEDate *cachedUntil;
 @property (strong) EVEError *apiError;
 
+#pragma mark - Relationship Methods
 -(void)setRelationshipsWithLastQueried:(NSString *)lastQueriedElement
                            CachedUntil:(NSString *)cachedUntilElement
                               ApiError:(NSString *)apiErrorElement;

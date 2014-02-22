@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#define XMLKITDEBUG
-
 // Code block that is called when XMLKit succeeds.
 // XKSuccessBlock({@"Built Object Class Name":@[Built, objects, ...], error)
 typedef void (^XKSuccessBlock)(NSDictionary *, NSError *);

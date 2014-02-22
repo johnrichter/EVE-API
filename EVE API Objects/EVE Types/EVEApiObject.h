@@ -40,7 +40,11 @@ typedef NS_ENUM(NSUInteger, EVECacheStyle)
 @property (strong) XKURLRequestOperation *requestOperation;
 @property (strong) NSMutableArray *objectDescriptors;
 
--(void)configureObjectBuilder;
+#pragma mark - Instance Methods
+-(void)performRequest;
+
+#pragma mark - Subclass Required Overrides
+-(void)configureObjectDescriptors;
 
 -(void)requestOperationSucceededWithObjects:(NSDictionary *)builtObjects
                                       Error:(NSError *)error;

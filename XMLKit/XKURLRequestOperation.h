@@ -11,6 +11,7 @@
 
 @interface XKURLRequestOperation : NSOperation <NSURLConnectionDelegate>
 
+@property BOOL requestWithPOST;
 @property (strong) NSString *url;
 @property (strong) NSDictionary *parameters;
 @property (strong) NSArray *objectDescriptors;

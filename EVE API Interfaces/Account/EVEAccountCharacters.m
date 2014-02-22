@@ -10,7 +10,7 @@
 
 @implementation EVEAccountCharacters
 
--(EVEAccountCharacters *)initWithEveKeyId:(NSString *)keyId VCode:(NSString *)vCode
+-(instancetype)initWithEveKeyId:(NSString *)keyId VCode:(NSString *)vCode
 {
    self = [super init];
    if (self)
@@ -29,41 +29,42 @@
       // Instance Properties
       self.keyId = keyId;
       self.vCode = vCode;
-      
-      // Object Building Properties
-      [self configureObjectBuilders];
    }
    
    return self;
 }
 
--(void)configureObjectBuilders
+-(void)configureObjectDescriptors
 {
+   [super configureObjectDescriptors];
+   
    XKObjectDescriptor *character = [[EVECharacter new] objectDescriptor];
-   [character setXmlKeypath:@"eveapi.result.rowset.row"];
+   [character setElementName:@"row"];
    
+   //
    // Add the EVECharacter blueprint to our list
-   [self.objectDescriptors addObject:character];
+   //
    
-   // Configure our RequestOperation with URI and Arguements
-   [self.requestOperation setADelegate:self];
-   [self.requestOperation setUrl:self.uri
-                  WithArguements:self.uriParameters
-                      Blueprints:self.objectDescriptors];
+   [self.objectDescriptors addObject:character];
 }
 
-#pragma mark - RequestOperationProtocolMethods
 -(void)requestOperationSucceededWithObjects:(NSDictionary *)builtObjects
                                       Error:(NSError *)error
 {
-   // Call our base classes protocol function
-   [super requestOperationSucceededWithObjects:objects];
+   // Call our base class function to handle any inherited built objects
+   [super requestOperationSucceededWithObjects:builtObjects Error:error];
    
-   for (id object in objects)
+   for (NSString *objectClass in builtObjects)
    {
-      if ([object class] == [EVECharacter class])
+      if (NSClassFromString(objectClass) == [EVECharacter class])
       {
-         [self.characters addObject:object];
+         for (EVECharacter *character in builtObjects[objectClass])
+         {
+            [self.characters addObject:character];
+         }
+         
+         // Break out of the loop since we only are looking for one type of object
+         break;
       }
    }
    
@@ -74,23 +75,18 @@
 
 -(void)requestOperationFailedWithError:(NSError *)error;
 {
+   [super requestOperationFailedWithError:error];
+   
    [[NSNotificationCenter defaultCenter] postNotificationName:NSStringFromClass([self class])
                                                        object:nil
                                                      userInfo:@{@"error":error}];
-}
-
--(void)queryTheApi
-{
-   [self.requestOperation start];
 }
 
 -(NSString *)description
 {
    NSMutableString *str = [NSMutableString stringWithFormat:
       @"%@ - Version %@\n\n"
-      @"URI:\t\t\t\t\t\t%@\n"
-      @"Legacy API Enabled:\t\t\t%s\n"
-      @"Legacy API Restriction:\t\t%@\n"
+      @"URL:\t\t\t\t\t\t%@\n"
       @"CAK Access Mask Required:\t%@\n"
       @"Date Last Queried:\t\t\t%@\n"
       @"Cached Until:\t\t\t\t%@\n"
@@ -98,9 +94,7 @@
       @"API Error:\t\t\t\t\t%@\n\n",
       self.commonName,
       self.apiVersion,
-      self.uri,
-      self.isLegacyApiKeyEnabled ? "Yes":"No",
-      [EVEApiObject legacyApiRestrictionToString:self.legacyApiRestriction],
+      self.url,
       self.cakAccessMask,
       self.lastQueried,
       self.cachedUntil,

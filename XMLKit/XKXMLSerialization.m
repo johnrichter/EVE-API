@@ -21,9 +21,10 @@
    self = [super init];
    if (self)
    {
-      self.xmlMap = nil;
+      self.currentTopLevelElement = nil;
       self.currentElement = nil;
       self.elementToParentMap = [NSMutableDictionary new];
+      self.xmlElements = [NSMutableArray new];
    }
    
    return self;
@@ -31,7 +32,7 @@
 
 #pragma mark - Class Routines
 
-+(NSDictionary *)XMLCollectionFromData:(NSData *)data Error:(NSError *__autoreleasing *)error
++(NSArray *)XMLCollectionFromData:(NSData *)data Error:(NSError *__autoreleasing *)error
 {
    XKXMLSerialization *newInstance = [XKXMLSerialization new];
    
@@ -47,10 +48,10 @@
       *error = [xmlParser parserError];
    }
    
-   return [newInstance immutableXmlMapCopy];
+   return [newInstance immutableCopyOfElements];
 }
 
-+(NSDictionary *)XMLCollectionFromFile:(NSURL *)pathToFile Error:(NSError *__autoreleasing *)error
++(NSArray *)XMLCollectionFromFile:(NSURL *)pathToFile Error:(NSError *__autoreleasing *)error
 {
    XKXMLSerialization *newInstance = [XKXMLSerialization new];
    
@@ -66,13 +67,24 @@
       *error = [xmlParser parserError];
    }
    
-   return [newInstance immutableXmlMapCopy];
+   return [newInstance immutableCopyOfElements];
 
 }
 
--(NSDictionary *)immutableXmlMapCopy
+-(NSArray *)immutableCopyOfElements
 {
-   return [self immutableCopyOfXmlElement:self.xmlMap];
+   //
+   // Create immutable copies of all elements mapped in xmlElements
+   //
+   
+   NSMutableArray *immutableElements = [NSMutableArray new];
+   
+   for (NSMutableDictionary *element in self.xmlElements)
+   {
+      [immutableElements addObject:[self immutableCopyOfXmlElement:element]];
+   }
+   
+   return [NSArray arrayWithArray:immutableElements];
 }
 
 -(NSDictionary *)immutableCopyOfXmlElement:(NSDictionary *)element
@@ -100,7 +112,7 @@
  */
 -(void)parserDidStartDocument:(NSXMLParser *)parser
 {
-#ifdef XMLKITDEBUG
+#ifdef DEBUG
    NSLog(@"Started parsing document");
 #endif
 }
@@ -110,7 +122,7 @@
  */
 -(void)parserDidEndDocument:(NSXMLParser *)parser
 {
-#ifdef XMLKITDEBUG
+#ifdef DEBUG
    NSLog(@"Ended parsing document");
 #endif
 }
@@ -133,10 +145,10 @@
       
       NSValue *newParentKey = [NSValue valueWithNonretainedObject:newElement];
       
-      // This is our first element
-      if (!self.xmlMap)
+      // This is a top level element
+      if (!self.currentTopLevelElement)
       {
-         self.xmlMap = newElement;
+         self.currentTopLevelElement = newElement;
       }
       else if (self.currentElement == nil) // We have more than one root
       {
@@ -147,8 +159,16 @@
          [self.currentElement[@"children"] addObject:newElement];
       }
       
-      // Update our element pointers
-      self.elementToParentMap[newParentKey] = self.currentElement;
+      //
+      // Update our element pointers.
+      //
+      
+      // If current element has not been set, we are processing the root (it has no parent)
+      if (self.currentElement)
+      {
+         self.elementToParentMap[newParentKey] = self.currentElement;
+      }
+
       self.currentElement = newElement;
    }
    else
@@ -164,9 +184,24 @@
                                      namespaceURI:(NSString *)namespaceURI
                                     qualifiedName:(NSString *)qName
 {
+   //
    // Update our element pointers
+   //
+   
+   // Set the currentElement to its parent
    NSValue *currentParentKey = [NSValue valueWithNonretainedObject:self.currentElement];
    self.currentElement = self.elementToParentMap[currentParentKey];
+   
+   // If the currentElement did not have a parent we have processed the entire top level
+   // element.  Add it to our list and reset the topLevelElement pointer and
+   // elementToParentMap.
+   if (!self.currentElement)
+   {
+      [self.xmlElements addObject:self.currentTopLevelElement];
+      self.currentTopLevelElement = nil;
+      
+      [self.elementToParentMap removeAllObjects];
+   }
 }
 
 /*
@@ -174,7 +209,7 @@
  */
 -(void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError
 {
-#ifdef XMLKITDEBUG
+#ifdef DEBUG
    NSLog(@"Error occurred while parsing data.\nCode: %ld\nDescription: %@",
          (long)parseError.code, parseError.description);
 #endif
@@ -187,7 +222,7 @@
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
    NSArray *nonWhiteSpaceCharacters =
-      [string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+      [string componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
    NSString *cleanString = [nonWhiteSpaceCharacters componentsJoinedByString:@""];
    
    // If the text was not all whitespace
@@ -211,7 +246,7 @@
  */
 -(void)parser:(NSXMLParser *)parser foundComment:(NSString *)comment
 {
-#ifdef XMLKITDEBUG
+#ifdef DEBUG
    NSLog(@"Found comment in document:\n\t%@", comment);
 #endif
 }
@@ -249,7 +284,7 @@
                                                                  type:(NSString *)type
                                                          defaultValue:(NSString *)defaultValue
 {
-#ifdef XMLKITDEBUG
+#ifdef DEBUG
    NSLog(@"Found attribute declaration with "
          @"name: %@, for element: %@, with type: %@, and default value: %@",
          attributeName, elementName, type, defaultValue);
@@ -262,7 +297,7 @@
 -(void)parser:(NSXMLParser *)parser foundElementDeclarationWithName:(NSString *)elementName
                                                               model:(NSString *)model
 {
-#ifdef XMLKITDEBUG
+#ifdef DEBUG
    NSLog(@"Found element declaration with name: %@ and model: %@",
          elementName, model);
 #endif
@@ -275,7 +310,7 @@
                                                                   publicID:(NSString *)publicID
                                                                   systemID:(NSString *)systemID
 {
-#ifdef XMLKITDEBUG
+#ifdef DEBUG
    NSLog(@"Found external entity declaration with name: %@, public ID: %@, and system ID: %@",
          name, publicID, systemID);
 #endif
@@ -287,7 +322,7 @@
 -(void)parser:(NSXMLParser *)parser foundInternalEntityDeclarationWithName:(NSString *)name
                                                                      value:(NSString *)value
 {
-#ifdef XMLKITDEBUG
+#ifdef DEBUG
    NSLog(@"Found internal entity declaraion with name: %@ and value: %@",
          name, value);
 #endif
@@ -301,7 +336,7 @@
                                                                   systemID:(NSString *)systemID
                                                               notationName:(NSString *)notationName
 {
-#ifdef XMLKITDEBUG
+#ifdef DEBUG
    NSLog(@"Found unparsed entity declaration with "
          @"name: %@, publid ID: %@, system ID: %@, and notation name: %@",
          name, publicID, systemID, notationName);
@@ -315,7 +350,7 @@
                                                             publicID:(NSString *)publicID
                                                             systemID:(NSString *)systemID
 {
-#ifdef XMLKITDEBUG
+#ifdef DEBUG
    NSLog(@"Found notation declaration with name: %@, public ID: %@, and system ID: %@",
          name, publicID, systemID);
 #endif

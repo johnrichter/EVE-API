@@ -12,7 +12,6 @@
 @interface EVEApiObject ()
 
 -(void)initializeSuccessAndFailureBlocks;
--(void)initializeObjectBuilders;
 
 @end
 
@@ -37,8 +36,10 @@
       self.apiError = [EVEError new];
       
       // Object Building Properties
+      self.objectDescriptors = [NSMutableArray new];
+      
       [self initializeSuccessAndFailureBlocks];
-      [self initializeObjectBuilders];
+      [self configureObjectDescriptors];
    }
    
    return self;
@@ -59,7 +60,10 @@
    };
 }
 
--(void)initializeObjectBuilders
+/*
+ * Subclass must call this parent class function
+ */
+-(void)configureObjectDescriptors
 {
    //
    // Set up EVEApi object blueprint and relationships
@@ -74,24 +78,42 @@
    // Add all of our object blueprints to our object
    //
    
-   self.objectDescriptors = [NSMutableArray arrayWithObject:eveapi.objectDescriptor];
-   
+   [self.objectDescriptors addObject:eveapi.objectDescriptor];
+}
+
+-(void)performRequest
+{
    //
-   // Create the request operation we will use to download the data, but do not configure
+   // Configure our RequestOperation with URI and Arguements
    //
    
    self.requestOperation = [XKURLRequestOperation new];
+
+   [self.requestOperation setUrl:[self.url copy]];
+   [self.requestOperation setParameters:[self.uriParameters copy]];
+   [self.requestOperation setObjectDescriptors:self.objectDescriptors];
+   [self.requestOperation setSuccessBlock:self.successBlock];
+   [self.requestOperation setFailureBlock:self.failureBlock];
+   
+   //
+   // Request the data from the API URL
+   //
+   
+   [self.requestOperation startRequest];
 }
 
--(void)configureObjectBuilder
-{
-   [NSException raise:@"Abstraction Method"
-               format:@"EVEApiObject subclass did not implement -configureObjectBuilders"];
-}
-
+/*
+ * Subclass must call this parent class function
+ */
 -(void)requestOperationSucceededWithObjects:(NSDictionary *)builtObjects
                                       Error:(NSError *)error
 {
+   if (error && error.code != 0)
+   {
+      NSLog(@"Non-terminal error while building objects.\nCode: %ld\nDescription: %@",
+            (long)error.code, error.description);
+   }
+   
    for (id objectClass in builtObjects)
    {
       if (NSClassFromString(objectClass) == [EVEApi class])
@@ -110,6 +132,9 @@
    }
 }
 
+/*
+ * Subclass must call this parent class function
+ */
 -(void)requestOperationFailedWithError:(NSError *)error
 {
    NSLog(@"Error occurred while building objects.\nCode: %ld\nDescription: %@",

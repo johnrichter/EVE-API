@@ -11,7 +11,6 @@
 
 @interface XKURLRequestOperation ()
 
-@property BOOL requestWithPOST;
 @property (strong) NSURLRequest *urlRequest;
 @property (strong) NSURLConnection *urlConnection;
 @property (strong) NSMutableData *receivedData;
@@ -149,8 +148,11 @@
 
 -(void)formatURLRequest
 {
+   NSString *encodedURL =
+      [self.url stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+   
    NSMutableURLRequest *urlRequest =
-      [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[self urlEncodeString:self.url]]
+      [NSMutableURLRequest requestWithURL:[NSURL URLWithString:encodedURL]
                               cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
                           timeoutInterval:60.0];
    
@@ -170,7 +172,8 @@
       }
    }
    
-   NSString *encodedParameters = [self urlEncodeString:parameterString];
+   NSString *encodedParameters =
+      [parameterString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
    
    if (self.requestWithPOST)
    {
@@ -180,8 +183,12 @@
    }
    else
    {
-      [urlRequest setURL:[NSURL URLWithString:encodedParameters]];
+      NSString *completeURL = [NSString stringWithFormat:@"%@%@",
+                                                         encodedURL, encodedParameters];
+      [urlRequest setURL:[NSURL URLWithString:completeURL]];
    }
+   
+   self.urlRequest = [urlRequest copy];
 }
 
 -(NSString *)urlEncodeString:(NSString *)string
@@ -256,7 +263,7 @@
 
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-#ifdef XMLKITDEBUG
+#ifdef DEBUG
    // We should release the connection and data object, but with ARC we do not have to
    NSLog(@"Connection failed! Error - %@ %@",
          [error localizedDescription],
@@ -266,7 +273,7 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-#ifdef XMLKITDEBUG
+#ifdef DEBUG
    NSLog(@"Received %ld bytes of data", (unsigned long)[self.receivedData length]);
    
    //
@@ -277,7 +284,7 @@
       [[NSString alloc] initWithBytes:[self.receivedData mutableBytes]
                                length:[self.receivedData length] encoding:NSUTF8StringEncoding];
    
-   NSLog(@"Received data string: %@", receivedDataString);
+   NSLog(@"Received data string:\n%@", receivedDataString);
    
 #endif
    

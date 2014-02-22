@@ -13,8 +13,22 @@
 
 @interface XKObjectBuilder ()
 
+#pragma mark - XML-to-Object Conversion Properties
+// Storage for the XKXMLSerialized XML element maps
+@property (strong) NSArray *xmlElementMaps;
+
+// Holds the elementName -> @[ObjectDescriptor] list
+@property (strong) NSDictionary *elementNameToDescriptorMap;
+
+// Storage for fully built objects {@"ClassName":@[Built, Objects]}
+@property (strong) NSMutableDictionary *builtObjects;
+
 // Value transformer to handle objective-c type conversions
 @property (strong) RKCompoundValueTransformer *valueTransformer;
+
+#pragma mark - Instance Methods
+
+-(void)initializeValueTransformer;
 
 #pragma mark - Descriptor Processing Methods
 
@@ -32,7 +46,7 @@
 
 #pragma mark - XML Traversing Methods
 
--(void)processXmlMap;
+-(void)processXmlElementMaps;
 -(void)traverseNextElementGroup:(NSArray *)elementGroup;
 -(void)processObject:(id)object
  RelationDescriptors:(NSArray *)descriptors
@@ -57,7 +71,7 @@ UsingElementChildren:(NSArray *)elementChildren;
    if (self)
    {
       self.xmlData = data;
-      self.xmlMap = @{};
+      self.xmlElementMaps = @[];
       self.objectDescriptors = objectDescriptors;
       self.builtObjects = [NSMutableDictionary new];
       self.elementNameToDescriptorMap =
@@ -67,42 +81,77 @@ UsingElementChildren:(NSArray *)elementChildren;
       self.successBlock = successBlock;
       self.failureBlock = failureBlock;
       
-      NSDateFormatter *customFormat1 = [NSDateFormatter new];
-      [customFormat1 setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-      [customFormat1 setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-      
-      self.valueTransformer =
-         [RKCompoundValueTransformer compoundValueTransformerWithValueTransformers:
-            @[[RKValueTransformer identityValueTransformer],
-              [RKValueTransformer stringToURLValueTransformer],
-              [RKValueTransformer decimalNumberToNumberValueTransformer],
-              [RKValueTransformer decimalNumberToStringValueTransformer],
-              [RKValueTransformer numberToStringValueTransformer],
-              [RKValueTransformer arrayToOrderedSetValueTransformer],
-              [RKValueTransformer arrayToSetValueTransformer],
-              [RKValueTransformer nullValueTransformer],
-              [RKValueTransformer keyedArchivingValueTransformer],
-              [RKValueTransformer stringValueTransformer],
-              [RKValueTransformer objectToCollectionValueTransformer],
-              [RKValueTransformer stringValueTransformer],
-              [RKValueTransformer keyOfDictionaryValueTransformer],
-              [RKValueTransformer mutableValueTransformer],
-              customFormat1,
-              [RKValueTransformer iso8601TimestampToDateValueTransformer],
-              [RKValueTransformer timeIntervalSince1970ToDateValueTransformer]]];
-      
-      NSArray *defaultDateFormatStrings = @[ @"MM/dd/yyyy", @"yyyy-MM-dd" ];
-      for (NSString *dateFormatString in defaultDateFormatStrings)
-      {
-         NSDateFormatter *dateFormatter = [NSDateFormatter new];
-         dateFormatter.dateFormat = dateFormatString;
-         dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-         dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
-         [self.valueTransformer addValueTransformer:dateFormatter];
-      }
+      [self initializeValueTransformer];
    }
    
    return self;
+}
+
+-(void)initializeValueTransformer
+{
+   NSDateFormatter *customFormat1 = [NSDateFormatter new];
+   [customFormat1 setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+   [customFormat1 setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+   
+   self.valueTransformer =
+   [RKCompoundValueTransformer compoundValueTransformerWithValueTransformers:
+    @[[RKValueTransformer identityValueTransformer],
+      [RKValueTransformer stringToURLValueTransformer],
+      [RKValueTransformer decimalNumberToNumberValueTransformer],
+      [RKValueTransformer decimalNumberToStringValueTransformer],
+      [RKValueTransformer numberToStringValueTransformer],
+      [RKValueTransformer arrayToOrderedSetValueTransformer],
+      [RKValueTransformer arrayToSetValueTransformer],
+      [RKValueTransformer nullValueTransformer],
+      [RKValueTransformer keyedArchivingValueTransformer],
+      [RKValueTransformer stringValueTransformer],
+      [RKValueTransformer objectToCollectionValueTransformer],
+      [RKValueTransformer stringValueTransformer],
+      [RKValueTransformer keyOfDictionaryValueTransformer],
+      [RKValueTransformer mutableValueTransformer],
+      customFormat1,
+      [RKValueTransformer iso8601TimestampToDateValueTransformer],
+      [RKValueTransformer timeIntervalSince1970ToDateValueTransformer]]];
+   
+   NSArray *defaultDateFormatStrings = @[ @"MM/dd/yyyy", @"yyyy-MM-dd" ];
+   for (NSString *dateFormatString in defaultDateFormatStrings)
+   {
+      NSDateFormatter *dateFormatter = [NSDateFormatter new];
+      dateFormatter.dateFormat = dateFormatString;
+      dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+      dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+      [self.valueTransformer addValueTransformer:dateFormatter];
+   }
+   
+//   RKValueTransformer *coreDataStringTransformer = [RKBlockValueTransformer
+//      valueTransformerWithValidationBlock:^BOOL(__unsafe_unretained Class sourceClass,
+//                                                __unsafe_unretained Class destinationClass)
+//      {
+//         // We transform an `NSString` into another `NSString`
+//         return ([sourceClass isSubclassOfClass:[NSString class]] &&
+//                 [destinationClass isSubclassOfClass:[NSString class]]);
+//      }
+//      transformationBlock:^BOOL(id inputValue,
+//                                __autoreleasing id *outputValue,
+//                                Class outputValueClass,
+//                                NSError *__autoreleasing *error)
+//      {
+//         // Validate the input and output
+//         RKValueTransformerTestInputValueIsKindOfClass(inputValue,
+//                                                       [NSString class],
+//                                                       error);
+//       
+//         RKValueTransformerTestOutputValueClassIsSubclassOfClass(outputValueClass,
+//                                                                 [NSString class],
+//                                                                 error);
+//       
+//         // Perform the transformation
+//         [(*(NSString *)outputValue) setString:[inputValue stringValue]];
+//         
+//         return YES;
+//      }];
+//   
+//   [self.valueTransformer addValueTransformer:coreDataStringTransformer];
 }
 
 #pragma mark - Public Methods
@@ -132,7 +181,7 @@ UsingElementChildren:(NSArray *)elementChildren;
    }
    
    NSError *xmlSerializeError = nil;
-   self.xmlMap =
+   self.xmlElementMaps =
       [XKXMLSerialization XMLCollectionFromData:self.xmlData Error:&xmlSerializeError];
    
    if (xmlSerializeError)
@@ -140,7 +189,7 @@ UsingElementChildren:(NSArray *)elementChildren;
       self.failureBlock(xmlSerializeError);
    }
    
-   if (!self.xmlMap || [self.xmlMap count] == 0)
+   if (!self.xmlElementMaps || [self.xmlElementMaps count] == 0)
    {
       NSDictionary *userInfo =
          @{NSLocalizedDescriptionKey:
@@ -152,7 +201,8 @@ UsingElementChildren:(NSArray *)elementChildren;
       self.failureBlock(error);
    }
    
-   if ([self.xmlMap count] > 1)
+   // Having more than one root element is acceptable in XML however, it is currently restricted
+   if ([self.xmlElementMaps count] > 1)
    {
       NSDictionary *userInfo =
          @{NSLocalizedDescriptionKey:
@@ -174,7 +224,7 @@ UsingElementChildren:(NSArray *)elementChildren;
    // Convert the XML Map into Objects
    //
    
-   [self processXmlMap];
+   [self processXmlElementMaps];
    
    //
    // All XML elements have been processed, report the success
@@ -266,6 +316,7 @@ UsingElementChildren:(NSArray *)elementChildren;
                break;
             }
          }
+         if (descriptor) break; // A match was found
       }
    }
    
@@ -280,6 +331,7 @@ UsingElementChildren:(NSArray *)elementChildren;
    //
    // The 'element' parameter is a dictionary with keys: attributes, value, children
    //
+   
    NSString *elementValue = element[@"value"];
    NSDictionary *elementAttributes = element[@"attributes"];
    NSArray *elementChildren = element[@"children"];
@@ -328,25 +380,36 @@ UsingElementChildren:(NSArray *)elementChildren;
 
 -(void)setObject:(id)object Value:(id)value ForKey:(NSString *)key
 {
-   if (![object respondsToSelector:NSSelectorFromString(key)])
+   if ([object respondsToSelector:NSSelectorFromString(key)])
    {
       // Will hold the object that matches the object's key type
       id convertedValue = nil;
       NSError *valueTransformError = nil;
+      BOOL transformSuccess = NO;
       
-      // We may have to loop through a class and its super classes here to find the right
-      // type.  For now just attempt a direct conversion using the valueTransformer.
-      BOOL success = [self.valueTransformer transformValue:value
-                                                   toValue:&convertedValue
-                                                   ofClass:[[object valueForKey:key] class]
-                                                     error:&valueTransformError];
-      if (success)
+      //
+      // Loop through the destination property type's classes to convert successfully
+      // This is done to get around string optimization and the use of string literals
+      // when initializing objects.  The type `NSCFConstantString` cannot be assigned to.
+      //
+      
+      Class objectPropertyClass = [[object valueForKey:key] class];
+      while (!transformSuccess && objectPropertyClass != nil)
+      {
+         transformSuccess = [self.valueTransformer transformValue:value
+                                                          toValue:&convertedValue
+                                                          ofClass:objectPropertyClass
+                                                            error:&valueTransformError];
+         objectPropertyClass = [objectPropertyClass superclass];
+      }
+      
+      if (transformSuccess)
       {
          [object setValue:convertedValue forKey:key];
       }
       else
       {
-#ifdef XMLKITDEBUG
+#ifdef DEBUG
          NSLog(@"Unable to convert value for %@ object's %@ property",
                NSStringFromClass([object class]), key);
 #endif
@@ -356,32 +419,37 @@ UsingElementChildren:(NSArray *)elementChildren;
 
 #pragma mark - XML Traversing Methods
 
--(void)processXmlMap
+-(void)processXmlElementMaps
 {
-   // Root XML element
-   NSString *elementName = self.xmlMap[@"name"];
-   NSDictionary *elementAttributes = self.xmlMap[@"attributes"];
-   NSArray *elementChildren = self.xmlMap[@"children"];
-   
    //
-   // Check the elementName and elementAttributes to see if they match an ObjectDescriptor
+   // Process all elements found in the xmlElementMaps
    //
    
-   XKObjectDescriptor *descriptor = [self findDescriptorMatchToElementName:elementName
-                                                                Attributes:elementAttributes
-                                                        UsingDescriptorMap:self.elementNameToDescriptorMap];
-   //
-   // Match - build the object. No Match - process the children.
-   //
-   
-   if (descriptor)
+   for (NSDictionary *element in self.xmlElementMaps)
    {
-      id newObject = [self createObjectFromElement:self.xmlMap
-                                   UsingDescriptor:descriptor];
-      [self saveBuiltObject:newObject];
-   }
-   else
-   {
+      NSString *elementName = element[@"name"];
+      NSDictionary *elementAttributes = element[@"attributes"];
+      NSArray *elementChildren = element[@"children"];
+      
+      //
+      // Check the elementName and elementAttributes to see if they match an ObjectDescriptor
+      //
+      
+      XKObjectDescriptor *descriptor =
+         [self findDescriptorMatchToElementName:elementName
+                                     Attributes:elementAttributes
+                             UsingDescriptorMap:self.elementNameToDescriptorMap];
+      //
+      // Match - build the object. Process the children.
+      //
+      
+      if (descriptor)
+      {
+         id newObject = [self createObjectFromElement:element
+                                      UsingDescriptor:descriptor];
+         [self saveBuiltObject:newObject];
+      }
+
       // This is a recursive function
       [self traverseNextElementGroup:elementChildren];
    }
@@ -400,25 +468,23 @@ UsingElementChildren:(NSArray *)elementChildren;
       // Check the elementName and elementAttributes to see if they match an ObjectDescriptor
       //
       
-      XKObjectDescriptor *descriptor = [self findDescriptorMatchToElementName:elementName
-                                                                   Attributes:elementAttributes
-                                                           UsingDescriptorMap:self.elementNameToDescriptorMap];
+      XKObjectDescriptor *descriptor =
+         [self findDescriptorMatchToElementName:elementName
+                                     Attributes:elementAttributes
+                             UsingDescriptorMap:self.elementNameToDescriptorMap];
       //
-      // Match - build the object. No Match - process the children.
+      // Match - build the object. Process the children.
       //
       
       if (descriptor)
       {
-         id newObject = [self createObjectFromElement:element[elementName]
+         id newObject = [self createObjectFromElement:element
                                       UsingDescriptor:descriptor];
          [self saveBuiltObject:newObject];
       }
-      else
-      {
-         // This is a recursive function
-         [self traverseNextElementGroup:elementChildren];
-      }
-
+      
+      // This is a recursive function
+      [self traverseNextElementGroup:elementChildren];
    }
 }
 
@@ -443,9 +509,9 @@ UsingElementChildren:(NSArray *)elementChildren
       NSDictionary *childElementAttributes = child[@"attributes"];
       
       XKObjectDescriptor *relationDescriptor =
-      [self findDescriptorMatchToElementName:childElementName
-                                  Attributes:childElementAttributes
-                          UsingDescriptorMap:relationElementNameToDescriptorMap];
+         [self findDescriptorMatchToElementName:childElementName
+                                     Attributes:childElementAttributes
+                             UsingDescriptorMap:relationElementNameToDescriptorMap];
       if (relationDescriptor)
       {
          id newRelationObject = [self createObjectFromElement:child

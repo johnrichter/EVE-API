@@ -11,8 +11,8 @@
 
 @interface XKXMLSerialization : NSObject <NSXMLParserDelegate>
 
-// Container for the in memory representation of the XML document
-@property (strong) NSMutableDictionary *xmlMap;
+// Container for the in memory representation of the current XML document
+@property (strong) NSMutableDictionary *currentTopLevelElement;
 
 // The current XML element being processed
 @property (strong) NSMutableDictionary *currentElement;
@@ -20,16 +20,19 @@
 // The mapping from elements to their parent elements
 @property (strong) NSMutableDictionary *elementToParentMap;
 
+// The collection of all elements mapped
+@property (strong) NSMutableArray *xmlElements;
+
 #pragma mark - Instance Methods
 
--(NSDictionary *)immutableXmlMapCopy;
+-(NSArray *)immutableCopyOfElements;
 
 #pragma mark - Class Methods
 
-+(NSDictionary *)XMLCollectionFromData:(NSData *)data
++(NSArray *)XMLCollectionFromData:(NSData *)data
                                  Error:(NSError *__autoreleasing *)error;
 
-+(NSDictionary *)XMLCollectionFromFile:(NSURL *)pathToFile
++(NSArray *)XMLCollectionFromFile:(NSURL *)pathToFile
                                  Error:(NSError *__autoreleasing *)error;
 
 #pragma mark - NSXMLParserDelegate Protocol Methods
