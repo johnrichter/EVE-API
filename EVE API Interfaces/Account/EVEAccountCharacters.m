@@ -18,7 +18,7 @@
       // Common API Properties
       self.commonName = @"Characters";
       [self.url appendString:@"account/Characters.xml.aspx"];
-      [self.uriParameters addEntriesFromDictionary:@{@"keyID":keyId,
+      [self.urlParameters addEntriesFromDictionary:@{@"keyID":keyId,
                                                      @"vCode":vCode}];
       self.cakAccessMask = @0;
       self.cacheStyle = kShortCache;

@@ -24,7 +24,7 @@ typedef NS_ENUM(NSUInteger, EVECacheStyle)
 #pragma mark - Common API Properties
 @property (strong) NSString *commonName;
 @property (strong) NSMutableString *url;
-@property (strong) NSMutableDictionary *uriParameters;
+@property (strong) NSMutableDictionary *urlParameters;
 @property (strong) NSNumber *cakAccessMask;
 @property enum EVECacheStyle cacheStyle;
 

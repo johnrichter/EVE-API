@@ -7,90 +7,105 @@
 //
 
 #import "EVEAccountStatus.h"
+#import "EVEAccountExpirationDate.h"
+#import "EVEAccountCreationDate.h"
+#import "EVEAccountLogonCount.h"
+#import "EVEAccountTotalMinutesPlayed.h"
 
 @implementation EVEAccountStatus
 
--(EVEAccountStatus *)initWithEveKeyId:(NSString *)keyId VCode:(NSString *)vCode
+-(instancetype)initWithEveKeyId:(NSString *)keyId VCode:(NSString *)vCode
 {
    self = [super init];
    if (self)
    {
       // Common API Properties
       self.commonName = @"Account Status";
-      [self.uri appendString:@"account/AccountStatus.xml.aspx"];
-      [self.uriArguments addEntriesFromDictionary:@{@"keyID":keyId,
+      [self.url appendString:@"account/AccountStatus.xml.aspx"];
+      [self.urlParameters addEntriesFromDictionary:@{@"keyID":keyId,
                                                     @"vCode":vCode}];
       self.cakAccessMask = @33554432;
       self.cacheStyle = kShortCache;
-      self.legacyApiRestriction = kFullAccess;
-      self.isLegacyApiKeyEnabled = YES;
       
       // Built Object Properties
-      self.paidUntil = [EVEAccountExpirationDate new];
-      self.creationDate = [EVEAccountCreationDate new];
-      self.logonCount = [EVEAccountLogonCount new];
-      self.minutesLoggedIn = [EVEAccountTotalMinutesPlayed new];
+      self.paidUntil = [NSDate new];
+      self.creationDate = [NSDate new];
+      self.logonCount = [NSNumber new];
+      self.minutesLoggedIn = [NSNumber new];
       
       // Instance Properties
       self.keyId = keyId;
       self.vCode = vCode;
-      
-      // Object Building Properties
-      [self configureObjectBuilders];
    }
    
    return self;
 }
 
-#pragma mark - EVEApiProtool Methods
--(void)configureObjectBuilders
+/*
+ * Subclass must call this parent class function
+ */
+-(void)configureObjectDescriptors
 {
-   // Create the xml property blueprints
-   XKObjectDescriptor *paidUntil = [[[EVEAccountExpirationDate alloc] init] objectDescriptor];
-   [paidUntil setXmlKeypath:@"eveapi.result.paidUntil"];
+   [super configureObjectDescriptors];
    
-   XKObjectDescriptor *creationDate = [[[EVEAccountCreationDate alloc] init] objectDescriptor];
-   [creationDate setXmlKeypath:@"eveapi.result.createDate"];
+   XKObjectDescriptor *paidUntil = [[EVEAccountExpirationDate new] objectDescriptor];
+   [paidUntil setElementName:@"paidUntil"];
    
-   XKObjectDescriptor *loginCount = [[[EVEAccountLogonCount alloc] init] objectDescriptor];
-   [loginCount setXmlKeypath:@"eveapi.result.logonCount"];
+   XKObjectDescriptor *creationDate = [[EVEAccountCreationDate new] objectDescriptor];
+   [creationDate setElementName:@"createDate"];
    
-   XKObjectDescriptor *minutesLoggedIn = [[[EVEAccountTotalMinutesPlayed alloc] init] objectDescriptor];
-   [minutesLoggedIn setXmlKeypath:@"eveapi.result.logonMinutes"];
+   XKObjectDescriptor *loginCount = [[EVEAccountLogonCount new] objectDescriptor];
+   [loginCount setElementName:@"logonCount"];
    
-   // Add the apiKey blueprint to our list
-   [self.objectDescriptors addObjectsFromArray:@[paidUntil,  creationDate,
-                                                loginCount, minutesLoggedIn]];
+   XKObjectDescriptor *minutesLoggedIn = [[EVEAccountTotalMinutesPlayed new] objectDescriptor];
+   [minutesLoggedIn setElementName:@"logonMinutes"];
    
-   // Configure our RequestOperation with URI and Arguements
-   [self.requestOperation setUrl:self.uri
-                  WithArguements:self.uriArguments
-                      Blueprints:self.objectDescriptors];
+   //
+   // Add the EVECharacter blueprint to our list
+   //
+   
+   [self.objectDescriptors addObjectsFromArray:@[paidUntil, creationDate,
+                                                 loginCount, minutesLoggedIn]];
 }
 
-#pragma mark - RequestOperationProtocolMethods
--(void)requestOperationSucceededWithObjects:(NSArray *)objects
+/*
+ * Subclass must call this parent class function
+ */
+-(void)requestOperationSucceededWithObjects:(NSDictionary *)builtObjects
+                                      Error:(NSError *)error
 {
-   // Call our base classes protocol function
-   [super requestOperationSucceededWithObjects:objects];
+   // Call our base class function to handle any inherited built objects
+   [super requestOperationSucceededWithObjects:builtObjects Error:error];
    
-   for (id object in objects)
+   for (NSString *objectClass in builtObjects)
    {
-      if ([object class] == [EVEAccountExpirationDate class])
+      if (NSClassFromString(objectClass) == [EVEAccountExpirationDate class])
       {
-         self.paidUntil = object;
+         for (EVEAccountExpirationDate *expirationDate in builtObjects[objectClass])
+         {
+            self.paidUntil = [expirationDate date];;
+         }
       }
-      else if ([object class] == [EVEAccountCreationDate class])
+      else if (NSClassFromString(objectClass) == [EVEAccountCreationDate class])
       {
-         self.creationDate= object;
+         for (EVEAccountCreationDate *creationDate in builtObjects[objectClass])
+         {
+            self.creationDate = [creationDate date];
+         }
       }
-      else if ([object class] == [EVEAccountLogonCount class])
+      else if (NSClassFromString(objectClass) == [EVEAccountLogonCount class])
       {
-         self.logonCount = object;
+         for (EVEAccountLogonCount *logonCount in builtObjects[objectClass])
+         {
+            self.logonCount = [logonCount number];
+         }
       }
-      else if ([object class] == [EVEAccountTotalMinutesPlayed class])
+      else if (NSClassFromString(objectClass) == [EVEAccountTotalMinutesPlayed class])
       {
-         self.minutesLoggedIn = object;
+         for (EVEAccountTotalMinutesPlayed *minutesPlayed in builtObjects[objectClass])
+         {
+            self.minutesLoggedIn = [minutesPlayed number];
+         }
       }
    }
    
@@ -99,48 +114,46 @@
                                                      userInfo:nil];
 }
 
+/*
+ * Subclass must call this parent class function
+ */
 -(void)requestOperationFailedWithError:(NSError *)error;
 {
+   [super requestOperationFailedWithError:error];
+   
    [[NSNotificationCenter defaultCenter] postNotificationName:NSStringFromClass([self class])
                                                        object:nil
                                                      userInfo:@{@"error":error}];
 }
 
--(void)queryTheApi
-{
-   [self.requestOperation start];
-}
-
 -(NSString *)description
 {
-   return [NSString stringWithFormat:
-           @"%@ - Version %@\n\n"
-           @"URI:\t\t\t\t\t\t%@\n"
-           @"Legacy API Enabled:\t\t\t%s\n"
-           @"Legacy API Restriction:\t\t%@\n"
-           @"CAK Access Mask Required:\t%@\n"
-           @"Date Last Queried:\t\t\t%@\n"
-           @"Cached Until:\t\t\t\t%@\n"
-           @"Cache Style:\t\t\t\t%@\n"
-           @"API Error:\t\t\t\t\t%@\n\n"
-           @"Paid Until: %@\n"
-           @"Date Created: %@\n"
-           @"Total Logins: %@\n"
-           @"Total Minutes Logged In: %@\n",
-           self.commonName,
-           self.apiVersion,
-           self.uri,
-           self.isLegacyApiKeyEnabled ? "Yes":"No",
-           [EVEApiObject legacyApiRestrictionToString:self.legacyApiRestriction],
-           self.cakAccessMask,
-           self.lastQueried,
-           self.cachedUntil,
-           [EVEApiObject cacheStyleToString:self.cacheStyle],
-           self.apiError,
-           self.paidUntil,
-           self.creationDate,
-           self.logonCount,
-           self.minutesLoggedIn];
+   NSMutableString *str = [NSMutableString stringWithFormat:
+                           @"%@ - Version %@\n\n"
+                           @"URL:\t\t\t\t\t\t%@\n"
+                           @"CAK Access Mask Required:\t%@\n"
+                           @"Date Last Queried:\t\t\t%@\n"
+                           @"Cached Until:\t\t\t\t%@\n"
+                           @"Cache Style:\t\t\t\t%@\n"
+                           @"API Error:\t\t\t\t\t%@\n\n"
+                           @"Paid Until: %@\n"
+                           @"Date Created: %@\n"
+                           @"Total Logins: %@\n"
+                           @"Total Minutes Logged In: %@\n",
+                           self.commonName,
+                           self.apiVersion,
+                           self.url,
+                           self.cakAccessMask,
+                           self.lastQueried,
+                           self.cachedUntil,
+                           [EVEApiObject cacheStyleToString:self.cacheStyle],
+                           self.apiError,
+                           self.paidUntil,
+                           self.creationDate,
+                           self.logonCount,
+                           self.minutesLoggedIn];
+   
+   return [NSString stringWithString:str];
 }
 
 @end

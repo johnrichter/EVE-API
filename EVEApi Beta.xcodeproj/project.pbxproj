@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		CD364A1818B90D3200B65FA1 /* EVEAccountStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = CD364A1718B90D3200B65FA1 /* EVEAccountStatus.m */; };
+		CD364A1D18B9105600B65FA1 /* EVEApi.m in Sources */ = {isa = PBXBuildFile; fileRef = CD364A1C18B9105600B65FA1 /* EVEApi.m */; };
+		CD364A2618B9108500B65FA1 /* EVEAccountCreationDate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD364A1F18B9108500B65FA1 /* EVEAccountCreationDate.m */; };
+		CD364A2718B9108500B65FA1 /* EVEAccountExpirationDate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD364A2118B9108500B65FA1 /* EVEAccountExpirationDate.m */; };
+		CD364A2818B9108500B65FA1 /* EVEAccountLogonCount.m in Sources */ = {isa = PBXBuildFile; fileRef = CD364A2318B9108500B65FA1 /* EVEAccountLogonCount.m */; };
+		CD364A2918B9108500B65FA1 /* EVEAccountTotalMinutesPlayed.m in Sources */ = {isa = PBXBuildFile; fileRef = CD364A2518B9108500B65FA1 /* EVEAccountTotalMinutesPlayed.m */; };
 		CD6CE95E18B5C08300E66CC9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6CE95D18B5C08300E66CC9 /* Cocoa.framework */; };
 		CD6CE96818B5C08300E66CC9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD6CE96618B5C08300E66CC9 /* InfoPlist.strings */; };
 		CD6CE96A18B5C08300E66CC9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6CE96918B5C08300E66CC9 /* main.m */; };
@@ -33,7 +38,6 @@
 		CD6D120D18B6E77C00DCECEC /* EVEAccountCharacters.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D120C18B6E77C00DCECEC /* EVEAccountCharacters.m */; };
 		CD6D121218B6E9C900DCECEC /* EVEApiObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D120F18B6E9C900DCECEC /* EVEApiObject.m */; };
 		CD6D121318B6E9C900DCECEC /* EVEObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D121118B6E9C900DCECEC /* EVEObject.m */; };
-		CD6D121E18B6EAE900DCECEC /* EVEApi.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D121518B6EAE900DCECEC /* EVEApi.m */; };
 		CD6D121F18B6EAE900DCECEC /* EVEBool.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D121718B6EAE900DCECEC /* EVEBool.m */; };
 		CD6D122018B6EAE900DCECEC /* EVEDate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D121918B6EAE900DCECEC /* EVEDate.m */; };
 		CD6D122118B6EAE900DCECEC /* EVENumber.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6D121B18B6EAE900DCECEC /* EVENumber.m */; };
@@ -55,6 +59,16 @@
 /* Begin PBXFileReference section */
 		CD364A1618B90D3200B65FA1 /* EVEAccountStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EVEAccountStatus.h; path = "EVE API Interfaces/Account/EVEAccountStatus.h"; sourceTree = "<group>"; };
 		CD364A1718B90D3200B65FA1 /* EVEAccountStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EVEAccountStatus.m; path = "EVE API Interfaces/Account/EVEAccountStatus.m"; sourceTree = "<group>"; };
+		CD364A1B18B9105600B65FA1 /* EVEApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EVEApi.h; path = "EVE API Objects/API Interface/EVEApi.h"; sourceTree = "<group>"; };
+		CD364A1C18B9105600B65FA1 /* EVEApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EVEApi.m; path = "EVE API Objects/API Interface/EVEApi.m"; sourceTree = "<group>"; };
+		CD364A1E18B9108500B65FA1 /* EVEAccountCreationDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EVEAccountCreationDate.h; path = "EVE API Objects/Account/EVEAccountCreationDate.h"; sourceTree = "<group>"; };
+		CD364A1F18B9108500B65FA1 /* EVEAccountCreationDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EVEAccountCreationDate.m; path = "EVE API Objects/Account/EVEAccountCreationDate.m"; sourceTree = "<group>"; };
+		CD364A2018B9108500B65FA1 /* EVEAccountExpirationDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EVEAccountExpirationDate.h; path = "EVE API Objects/Account/EVEAccountExpirationDate.h"; sourceTree = "<group>"; };
+		CD364A2118B9108500B65FA1 /* EVEAccountExpirationDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EVEAccountExpirationDate.m; path = "EVE API Objects/Account/EVEAccountExpirationDate.m"; sourceTree = "<group>"; };
+		CD364A2218B9108500B65FA1 /* EVEAccountLogonCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EVEAccountLogonCount.h; path = "EVE API Objects/Account/EVEAccountLogonCount.h"; sourceTree = "<group>"; };
+		CD364A2318B9108500B65FA1 /* EVEAccountLogonCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EVEAccountLogonCount.m; path = "EVE API Objects/Account/EVEAccountLogonCount.m"; sourceTree = "<group>"; };
+		CD364A2418B9108500B65FA1 /* EVEAccountTotalMinutesPlayed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EVEAccountTotalMinutesPlayed.h; path = "EVE API Objects/Account/EVEAccountTotalMinutesPlayed.h"; sourceTree = "<group>"; };
+		CD364A2518B9108500B65FA1 /* EVEAccountTotalMinutesPlayed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EVEAccountTotalMinutesPlayed.m; path = "EVE API Objects/Account/EVEAccountTotalMinutesPlayed.m"; sourceTree = "<group>"; };
 		CD6CE95A18B5C08300E66CC9 /* EVEApi Beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EVEApi Beta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD6CE95D18B5C08300E66CC9 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		CD6CE96018B5C08300E66CC9 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -100,8 +114,6 @@
 		CD6D120F18B6E9C900DCECEC /* EVEApiObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EVEApiObject.m; path = "EVE API Objects/EVE Types/EVEApiObject.m"; sourceTree = "<group>"; };
 		CD6D121018B6E9C900DCECEC /* EVEObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EVEObject.h; path = "EVE API Objects/EVE Types/EVEObject.h"; sourceTree = "<group>"; };
 		CD6D121118B6E9C900DCECEC /* EVEObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EVEObject.m; path = "EVE API Objects/EVE Types/EVEObject.m"; sourceTree = "<group>"; };
-		CD6D121418B6EAE900DCECEC /* EVEApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EVEApi.h; path = "EVE API Objects/EVE Types/EVEApi.h"; sourceTree = "<group>"; };
-		CD6D121518B6EAE900DCECEC /* EVEApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EVEApi.m; path = "EVE API Objects/EVE Types/EVEApi.m"; sourceTree = "<group>"; };
 		CD6D121618B6EAE900DCECEC /* EVEBool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EVEBool.h; path = "EVE API Objects/EVE Types/EVEBool.h"; sourceTree = "<group>"; };
 		CD6D121718B6EAE900DCECEC /* EVEBool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EVEBool.m; path = "EVE API Objects/EVE Types/EVEBool.m"; sourceTree = "<group>"; };
 		CD6D121818B6EAE900DCECEC /* EVEDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EVEDate.h; path = "EVE API Objects/EVE Types/EVEDate.h"; sourceTree = "<group>"; };
@@ -140,8 +152,8 @@
 		CD364A1918B90EE100B65FA1 /* API Interface */ = {
 			isa = PBXGroup;
 			children = (
-				CD6D121418B6EAE900DCECEC /* EVEApi.h */,
-				CD6D121518B6EAE900DCECEC /* EVEApi.m */,
+				CD364A1B18B9105600B65FA1 /* EVEApi.h */,
+				CD364A1C18B9105600B65FA1 /* EVEApi.m */,
 			);
 			name = "API Interface";
 			sourceTree = "<group>";
@@ -326,10 +338,10 @@
 		CD6D11ED18B6D61C00DCECEC /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				CD364A1618B90D3200B65FA1 /* EVEAccountStatus.h */,
-				CD364A1718B90D3200B65FA1 /* EVEAccountStatus.m */,
 				CD6D120B18B6E77C00DCECEC /* EVEAccountCharacters.h */,
 				CD6D120C18B6E77C00DCECEC /* EVEAccountCharacters.m */,
+				CD364A1618B90D3200B65FA1 /* EVEAccountStatus.h */,
+				CD364A1718B90D3200B65FA1 /* EVEAccountStatus.m */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -514,6 +526,14 @@
 		CD6D120518B6D71200DCECEC /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				CD364A1E18B9108500B65FA1 /* EVEAccountCreationDate.h */,
+				CD364A1F18B9108500B65FA1 /* EVEAccountCreationDate.m */,
+				CD364A2018B9108500B65FA1 /* EVEAccountExpirationDate.h */,
+				CD364A2118B9108500B65FA1 /* EVEAccountExpirationDate.m */,
+				CD364A2218B9108500B65FA1 /* EVEAccountLogonCount.h */,
+				CD364A2318B9108500B65FA1 /* EVEAccountLogonCount.m */,
+				CD364A2418B9108500B65FA1 /* EVEAccountTotalMinutesPlayed.h */,
+				CD364A2518B9108500B65FA1 /* EVEAccountTotalMinutesPlayed.m */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -624,22 +644,26 @@
 				CDEF028E18B7EC33001BFD20 /* EVECharacter.m in Sources */,
 				CD6D122018B6EAE900DCECEC /* EVEDate.m in Sources */,
 				CD364A1818B90D3200B65FA1 /* EVEAccountStatus.m in Sources */,
-				CD6D121E18B6EAE900DCECEC /* EVEApi.m in Sources */,
 				CD6CE99718B5C0BC00E66CC9 /* RKValueTransformers.m in Sources */,
 				CD6CE9A818B5C0C300E66CC9 /* XKXMLSerialization.m in Sources */,
 				CD6D122518B6EB3800DCECEC /* EVEError.m in Sources */,
 				CD6CE9A518B5C0C300E66CC9 /* XKObjectBuilder.m in Sources */,
 				CD6CE9A918B5C0C300E66CC9 /* XMLKitErrors.m in Sources */,
+				CD364A2918B9108500B65FA1 /* EVEAccountTotalMinutesPlayed.m in Sources */,
 				CD6CE97718B5C08300E66CC9 /* EVEApi_Beta.xcdatamodeld in Sources */,
 				CD6D122218B6EAE900DCECEC /* EVEString.m in Sources */,
 				CD6D121318B6E9C900DCECEC /* EVEObject.m in Sources */,
 				CD6D122118B6EAE900DCECEC /* EVENumber.m in Sources */,
 				CD6CE97118B5C08300E66CC9 /* AppDelegate.m in Sources */,
+				CD364A1D18B9105600B65FA1 /* EVEApi.m in Sources */,
+				CD364A2718B9108500B65FA1 /* EVEAccountExpirationDate.m in Sources */,
 				CD6CE9A618B5C0C300E66CC9 /* XKObjectDescriptor.m in Sources */,
 				CD6CE96A18B5C08300E66CC9 /* main.m in Sources */,
 				CD6D120D18B6E77C00DCECEC /* EVEAccountCharacters.m in Sources */,
 				CD6D121218B6E9C900DCECEC /* EVEApiObject.m in Sources */,
 				CD6CE9A718B5C0C300E66CC9 /* XKURLRequestOperation.m in Sources */,
+				CD364A2818B9108500B65FA1 /* EVEAccountLogonCount.m in Sources */,
+				CD364A2618B9108500B65FA1 /* EVEAccountCreationDate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

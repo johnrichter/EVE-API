@@ -25,7 +25,7 @@
       // Common API Properties
       self.commonName = @"";
       self.url = [NSMutableString stringWithString:@"https://api.eveonline.com/"];
-      self.uriParameters = [NSMutableDictionary new];
+      self.urlParameters = [NSMutableDictionary new];
       self.cakAccessMask = @0;
       self.cacheStyle = kLongCache;
       
@@ -90,7 +90,7 @@
    self.requestOperation = [XKURLRequestOperation new];
 
    [self.requestOperation setUrl:[self.url copy]];
-   [self.requestOperation setParameters:[self.uriParameters copy]];
+   [self.requestOperation setParameters:[self.urlParameters copy]];
    [self.requestOperation setObjectDescriptors:self.objectDescriptors];
    [self.requestOperation setSuccessBlock:self.successBlock];
    [self.requestOperation setFailureBlock:self.failureBlock];

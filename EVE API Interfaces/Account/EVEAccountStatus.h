@@ -8,42 +8,29 @@
 
 #import <Foundation/Foundation.h>
 #import "EVEApiObject.h"
-#import "EVEAccountExpirationDate.h"
-#import "EVEAccountCreationDate.h"
-#import "EVEAccountLogonCount.h"
-#import "EVEAccountTotalMinutesPlayed.h"
 
 @interface EVEAccountStatus : EVEApiObject
 
 #pragma mark - XML Properties
 
 // The date until which the account is currently subscribed
-@property (strong) EVEAccountExpirationDate *paidUntil;
+@property (strong) NSDate *paidUntil;
 
 // The date the account was created
-@property (strong) EVEDate *creationDate;
+@property (strong) NSDate *creationDate;
 
 // The number of times you logged into CCP's services.
 // # game logons + # forum logons + # EVEGate logons
-@property (strong) EVEAccountLogonCount *logonCount;
+@property (strong) NSNumber *logonCount;
 
 // The amount of time you actually spent logged on in the game
-@property (strong) EVEAccountTotalMinutesPlayed *minutesLoggedIn;
+@property (strong) NSNumber *minutesLoggedIn;
 
 #pragma mark - Instance Properties
 @property (strong) NSString *keyId;
 @property (strong) NSString *vCode;
 
 #pragma mark - Instance Methods
--(EVEAccountStatus *)initWithEveKeyId:(NSString *)keyId VCode:(NSString *)vCode;
--(void)queryTheApi;
-
-#pragma mark - EVEApiProtool Methods
--(void)configureObjectBuilders;
-
-#pragma mark - RequestOperationProtocolMethods
--(void)requestOperationSucceededWithObjects:(NSArray *)objects;
--(void)requestOperationFailedWithError:(NSError *)error;
-
+-(instancetype)initWithEveKeyId:(NSString *)keyId VCode:(NSString *)vCode;
 
 @end

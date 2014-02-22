@@ -10,7 +10,7 @@
 
 // Account APIs
 //#import "EVEApiKeyInformation.h"
-//#import "EVEAccountStatus.h"
+#import "EVEAccountStatus.h"
 #import "EVEAccountCharacters.h"
 //
 //// Character APIs
@@ -75,7 +75,7 @@
 @property (strong) IBOutlet NSTextView *xmlTextView;
 
 //@property (strong) EVEApiKeyInformation *apiKeyInfo;
-//@property (strong) EVEAccountStatus *accountStatus;
+@property (strong) EVEAccountStatus *accountStatus;
 @property (strong) EVEAccountCharacters *accountCharacters;
 //@property (strong) EVEAccountBalance *accountBalance;
 //@property (strong) EVEAssetList *assetList;

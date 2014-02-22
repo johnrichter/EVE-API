@@ -24,11 +24,11 @@
 //                                             selector:@selector(EVEApiKeyInformationDidLoad:)
 //                                                 name:NSStringFromClass([EVEApiKeyInformation class])
 //                                               object:nil];
-//
-//      [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(EVEAccountStatusDidLoad:)
-//                                                 name:NSStringFromClass([EVEAccountStatus class])
-//                                               object:nil];
+
+      [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(EVEAccountStatusDidLoad:)
+                                                 name:NSStringFromClass([EVEAccountStatus class])
+                                               object:nil];
 
       [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(EVEAccountCharactersDidLoad:)
@@ -307,14 +307,13 @@
 //   self.apiKeyInfo = [[EVEApiKeyInformation alloc] initWithEveKeyId:keyId VCode:vCode];
 //   
 //   //[self.apiKeyInfo queryTheApi];
-//   
-//   self.accountStatus = [[EVEAccountStatus alloc] initWithEveKeyId:keyId VCode:vCode];
-//   
-//   //[self.accountStatus queryTheApi];
+   
+   self.accountStatus = [[EVEAccountStatus alloc] initWithEveKeyId:keyId VCode:vCode];
+   [self.accountStatus performRequest];
    
    self.accountCharacters = [[EVEAccountCharacters alloc] initWithEveKeyId:keyId
                                                                      VCode:vCode];
-   [self.accountCharacters performRequest];
+   //[self.accountCharacters performRequest];
    
 //   self.accountBalance = [[EVEAccountBalance alloc] initWithEveKeyId:keyId
 //                                                               VCode:vCode
@@ -539,14 +538,14 @@
 //   [newStr appendFormat:@"%@\n", self.apiKeyInfo];
 //   [self.xmlTextView setString:newStr];
 //}
-//
-//-(void)EVEAccountStatusDidLoad:(NSNotification *)notification
-//{
-//   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
-//   [newStr appendString:self.xmlTextView.string];
-//   [newStr appendFormat:@"%@\n", self.accountStatus];
-//   [self.xmlTextView setString:newStr];
-//}
+
+-(void)EVEAccountStatusDidLoad:(NSNotification *)notification
+{
+   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
+   [newStr appendString:self.xmlTextView.string];
+   [newStr appendFormat:@"%@\n", self.accountStatus];
+   [self.xmlTextView setString:newStr];
+}
 
 -(void)EVEAccountCharactersDidLoad:(NSNotification *)notification
 {
