@@ -32,7 +32,7 @@
 {
    [self.objectDescriptor setObjectClass:[self class]];
    [self.objectDescriptor setObjectAttributeProperties:@{@"characterID":@"characterId",
-                                                         @"name":@"characterName",
+                                                         @"characterName":@"characterName",
                                                          @"corporationID":@"corporationId",
                                                          @"corporationName":@"corporationName"}];
 }

@@ -17,7 +17,7 @@
    self = [super init];
    if (self)
    {
-      self.date = [[NSDate alloc] init];
+      self.date = [NSDate new];
    }
    
    return self;

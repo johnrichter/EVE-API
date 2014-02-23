@@ -9,11 +9,11 @@
 #import <Cocoa/Cocoa.h>
 
 // Account APIs
-//#import "EVEApiKeyInformation.h"
+#import "EVEApiKeyInformation.h"
 #import "EVEAccountStatus.h"
 #import "EVEAccountCharacters.h"
-//
-//// Character APIs
+
+// Character APIs
 //#import "EVEAccountBalance.h"
 //#import "EVEAssetList.h"
 //#import "EVECalendarEventAttendees.h"
@@ -41,11 +41,11 @@
 //#import "EVEUpcomingCalendarEvents.h"
 //#import "EVEWalletJournal.h"
 //#import "EVEWalletTransactions.h"
-//
-//// Corporation APIs
-//
-//// Global EVE APIs
-//#import "EVEAllianceList.h"
+
+// Corporation APIs
+
+// Global EVE APIs
+#import "EVEAllianceList.h"
 //#import "EVECharacterInfo.h"
 //#import "EVECharacterIdToName.h"
 //#import "EVECharacterNameToId.h"
@@ -56,25 +56,25 @@
 //#import "EVEReferenceTypes.h"
 //#import "EVESkillTree.h"
 //#import "EVETypeName.h"
-//
-//// Map APIs
+
+// Map APIs
 //#import "EVEFactionalWarfareSystems.h"
 //#import "EVEJumps.h"
 //#import "EVEKills.h"
 //#import "EVESovereignty.h"
-//
-//// Misc APIs
+
+// Misc APIs
 //#import "EVEImage.h"
-//
-//// Server APIs
+
+// Server APIs
 //#import "EVEServerStatus.h"
-//#import "EVECallList.h"
+#import "EVECallList.h"
 
 @interface MainWindowController : NSWindowController
 
 @property (strong) IBOutlet NSTextView *xmlTextView;
 
-//@property (strong) EVEApiKeyInformation *apiKeyInfo;
+@property (strong) EVEApiKeyInformation *apiKeyInfo;
 @property (strong) EVEAccountStatus *accountStatus;
 @property (strong) EVEAccountCharacters *accountCharacters;
 //@property (strong) EVEAccountBalance *accountBalance;
@@ -104,9 +104,9 @@
 //@property (strong) EVEStandings *standings;
 //@property (strong) EVEWalletJournal *walletJournal;
 //@property (strong) EVEWalletTransactions *walletTransactions;
-//
-//// EVE Global APIs
-//@property (strong) EVEAllianceList *allianceList;
+
+// EVE Global APIs
+@property (strong) EVEAllianceList *allianceList;
 //@property (strong) EVECharacterNameToId *charNameToId;
 //@property (strong) EVECharacterIdToName *charIdToName;
 //@property (strong) EVECharacterInfo *characterInfo;
@@ -116,17 +116,17 @@
 //@property (strong) EVETypeName *typeName;
 //@property (strong) EVEFactionalWarfareTopStats *factionWarTopStats;
 //@property (strong) EVESkillTree *skillTree;
-//
-//// Map APIs
+
+// Map APIs
 //@property (strong) EVEFactionalWarfareSystems *facWarSystems;
 //@property (strong) EVEJumps *jumps;
 //@property (strong) EVEKills *kills;
 //@property (strong) EVESovereignty *sovereignty;
-//
-//// Server APIs
+
+// Server APIs
 //@property (strong) EVEServerStatus *serverStatus;
-//
-//// Eve Online API Server APIs
-//@property (strong) EVECallList *callList;
+
+// Eve Online API Server APIs
+@property (strong) EVECallList *callList;
 
 @end

@@ -122,36 +122,6 @@ UsingElementChildren:(NSArray *)elementChildren;
       dateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
       [self.valueTransformer addValueTransformer:dateFormatter];
    }
-   
-//   RKValueTransformer *coreDataStringTransformer = [RKBlockValueTransformer
-//      valueTransformerWithValidationBlock:^BOOL(__unsafe_unretained Class sourceClass,
-//                                                __unsafe_unretained Class destinationClass)
-//      {
-//         // We transform an `NSString` into another `NSString`
-//         return ([sourceClass isSubclassOfClass:[NSString class]] &&
-//                 [destinationClass isSubclassOfClass:[NSString class]]);
-//      }
-//      transformationBlock:^BOOL(id inputValue,
-//                                __autoreleasing id *outputValue,
-//                                Class outputValueClass,
-//                                NSError *__autoreleasing *error)
-//      {
-//         // Validate the input and output
-//         RKValueTransformerTestInputValueIsKindOfClass(inputValue,
-//                                                       [NSString class],
-//                                                       error);
-//       
-//         RKValueTransformerTestOutputValueClassIsSubclassOfClass(outputValueClass,
-//                                                                 [NSString class],
-//                                                                 error);
-//       
-//         // Perform the transformation
-//         [(*(NSString *)outputValue) setString:[inputValue stringValue]];
-//         
-//         return YES;
-//      }];
-//   
-//   [self.valueTransformer addValueTransformer:coreDataStringTransformer];
 }
 
 #pragma mark - Public Methods

@@ -20,10 +20,10 @@
    if (self)
    {
       // Character APIs
-//      [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(EVEApiKeyInformationDidLoad:)
-//                                                 name:NSStringFromClass([EVEApiKeyInformation class])
-//                                               object:nil];
+      [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(EVEApiKeyInformationDidLoad:)
+                                                 name:NSStringFromClass([EVEApiKeyInformation class])
+                                               object:nil];
 
       [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(EVEAccountStatusDidLoad:)
@@ -175,11 +175,11 @@
 //      // Corporation APIs
 //      
 //      // EVE Global APIs
-//      [[NSNotificationCenter defaultCenter] addObserver:self
-//                                               selector:@selector(EVEAllianceListDidLoad:)
-//                                                   name:NSStringFromClass([EVEAllianceList class])
-//                                                 object:nil];
-//      
+      [[NSNotificationCenter defaultCenter] addObserver:self
+                                               selector:@selector(EVEAllianceListDidLoad:)
+                                                   name:NSStringFromClass([EVEAllianceList class])
+                                                 object:nil];
+      
 //      [[NSNotificationCenter defaultCenter] addObserver:self
 //                                               selector:@selector(EVECharacterNameToIdDidLoad:)
 //                                                   name:NSStringFromClass([EVECharacterNameToId class])
@@ -251,11 +251,11 @@
 //                                               selector:@selector(EVEServerStatusDidLoad:)
 //                                                   name:NSStringFromClass([EVEServerStatus class])
 //                                                 object:nil];
-//      
-//      [[NSNotificationCenter defaultCenter] addObserver:self
-//                                               selector:@selector(EVECallListDidLoad:)
-//                                                   name:NSStringFromClass([EVECallList class])
-//                                                 object:nil];
+      
+      [[NSNotificationCenter defaultCenter] addObserver:self
+                                               selector:@selector(EVECallListDidLoad:)
+                                                   name:NSStringFromClass([EVECallList class])
+                                                 object:nil];
    }
    
    return self;
@@ -304,12 +304,11 @@
    
    // ------------------------------------------------------------------------------------
    // Character APIs
-//   self.apiKeyInfo = [[EVEApiKeyInformation alloc] initWithEveKeyId:keyId VCode:vCode];
-//   
-//   //[self.apiKeyInfo queryTheApi];
+   self.apiKeyInfo = [[EVEApiKeyInformation alloc] initWithEveKeyId:keyId VCode:vCode];
+   //[self.apiKeyInfo performRequest];
    
    self.accountStatus = [[EVEAccountStatus alloc] initWithEveKeyId:keyId VCode:vCode];
-   [self.accountStatus performRequest];
+   //[self.accountStatus performRequest];
    
    self.accountCharacters = [[EVEAccountCharacters alloc] initWithEveKeyId:keyId
                                                                      VCode:vCode];
@@ -466,9 +465,9 @@
 //   
 //   // ------------------------------------------------------------------------------------
 //   // EVE Global APIs
-//   self.allianceList = [EVEAllianceList new];
-//   //[self.allianceList queryTheApi];
-//   
+   self.allianceList = [EVEAllianceList new];
+   [self.allianceList performRequest];
+//
 //   self.charNameToId = [[EVECharacterNameToId alloc] initWithNames:@[@"Minos%20Daedalus",
 //                                                                     @"Master%20DarkEnforcer"]];
 //   //[self.charNameToId queryTheApi];
@@ -519,8 +518,8 @@
 //   // ------------------------------------------------------------------------------------
 //   // Server APIs
 //   
-//   self.callList = [EVECallList new];
-//   //[self.callList queryTheApi];
+   self.callList = [EVECallList new];
+   //[self.callList performRequest];
 //   
 //   self.serverStatus = [EVEServerStatus new];
 //   //[self.serverStatus queryTheApi];
@@ -531,13 +530,13 @@
    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-//-(void)EVEApiKeyInformationDidLoad:(NSNotification *)notification
-//{
-//   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
-//   [newStr appendString:self.xmlTextView.string];
-//   [newStr appendFormat:@"%@\n", self.apiKeyInfo];
-//   [self.xmlTextView setString:newStr];
-//}
+-(void)EVEApiKeyInformationDidLoad:(NSNotification *)notification
+{
+   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
+   [newStr appendString:self.xmlTextView.string];
+   [newStr appendFormat:@"%@\n", self.apiKeyInfo];
+   [self.xmlTextView setString:newStr];
+}
 
 -(void)EVEAccountStatusDidLoad:(NSNotification *)notification
 {
@@ -770,20 +769,20 @@
 //   [newStr appendFormat:@"%@\n", self.walletTransactions];
 //   [self.xmlTextView setString:newStr];
 //}
-//
-//// Character/Corporation APIs
-//
-//// Corporation APIs
-//
-//// EVE Global APIs
-//-(void)EVEAllianceListDidLoad:(NSNotification *)notification
-//{
-//   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
-//   [newStr appendString:self.xmlTextView.string];
-//   [newStr appendFormat:@"%@\n", self.allianceList];
-//   [self.xmlTextView setString:newStr];
-//}
-//
+
+// Character/Corporation APIs
+
+// Corporation APIs
+
+// EVE Global APIs
+-(void)EVEAllianceListDidLoad:(NSNotification *)notification
+{
+   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
+   [newStr appendString:self.xmlTextView.string];
+   [newStr appendFormat:@"%@\n", self.allianceList];
+   [self.xmlTextView setString:newStr];
+}
+
 //-(void)EVECharacterNameToIdDidLoad:(NSNotification *)notification
 //{
 //   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
@@ -888,16 +887,16 @@
 //   [newStr appendFormat:@"%@\n", self.facWarSystems];
 //   [self.xmlTextView setString:newStr];
 //}
-//
-//// EVE Online APIs Server APIs
-//-(void)EVECallListDidLoad:(NSNotification *)notification
-//{
-//   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
-//   [newStr appendString:self.xmlTextView.string];
-//   [newStr appendFormat:@"%@\n", self.callList];
-//   [self.xmlTextView setString:newStr];
-//}
-//
+
+// EVE Online APIs Server APIs
+-(void)EVECallListDidLoad:(NSNotification *)notification
+{
+   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
+   [newStr appendString:self.xmlTextView.string];
+   [newStr appendFormat:@"%@\n", self.callList];
+   [self.xmlTextView setString:newStr];
+}
+
 //-(void)EVEServerStatusDidLoad:(NSNotification *)notification
 //{
 //   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];

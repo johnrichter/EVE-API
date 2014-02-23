@@ -23,7 +23,7 @@
       self.commonName = @"Account Status";
       [self.url appendString:@"account/AccountStatus.xml.aspx"];
       [self.urlParameters addEntriesFromDictionary:@{@"keyID":keyId,
-                                                    @"vCode":vCode}];
+                                                     @"vCode":vCode}];
       self.cakAccessMask = @33554432;
       self.cacheStyle = kShortCache;
       
