@@ -58,10 +58,10 @@
 //#import "EVETypeName.h"
 
 // Map APIs
-//#import "EVEFactionalWarfareSystems.h"
-//#import "EVEJumps.h"
-//#import "EVEKills.h"
-//#import "EVESovereignty.h"
+#import "EVEFactionalWarfareSystems.h"
+#import "EVEJumps.h"
+#import "EVEKills.h"
+#import "EVESovereignty.h"
 
 // Misc APIs
 //#import "EVEImage.h"
@@ -118,10 +118,10 @@
 //@property (strong) EVESkillTree *skillTree;
 
 // Map APIs
-//@property (strong) EVEFactionalWarfareSystems *facWarSystems;
-//@property (strong) EVEJumps *jumps;
-//@property (strong) EVEKills *kills;
-//@property (strong) EVESovereignty *sovereignty;
+@property (strong) EVEFactionalWarfareSystems *facWarSystems;
+@property (strong) EVEJumps *jumps;
+@property (strong) EVEKills *kills;
+@property (strong) EVESovereignty *sovereignty;
 
 // Server APIs
 //@property (strong) EVEServerStatus *serverStatus;
