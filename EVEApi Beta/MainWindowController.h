@@ -46,16 +46,16 @@
 
 // Global EVE APIs
 #import "EVEAllianceList.h"
-//#import "EVECharacterInfo.h"
+#import "EVECharacterNameToId.h"
+#import "EVECharacterInfo.h"
 //#import "EVECharacterIdToName.h"
-//#import "EVECharacterNameToId.h"
-//#import "EVEConquerableStationList.h"
+#import "EVEConquerableStationList.h"
 //#import "EVEErrorList.h"
 //#import "EVEFactionalWarfareGlobalStats.h"
 //#import "EVEFactionalWarfareTopStats.h"
-//#import "EVEReferenceTypes.h"
+#import "EVEReferenceTypes.h"
 //#import "EVESkillTree.h"
-//#import "EVETypeName.h"
+#import "EVETypeName.h"
 
 // Map APIs
 #import "EVEFactionalWarfareSystems.h"
@@ -67,7 +67,7 @@
 //#import "EVEImage.h"
 
 // Server APIs
-//#import "EVEServerStatus.h"
+#import "EVEServerStatus.h"
 #import "EVECallList.h"
 
 @interface MainWindowController : NSWindowController
@@ -107,15 +107,15 @@
 
 // EVE Global APIs
 @property (strong) EVEAllianceList *allianceList;
-//@property (strong) EVECharacterNameToId *charNameToId;
+@property (strong) EVECharacterNameToId *charNameToId;
+@property (strong) EVECharacterInfo *characterInfo;
 //@property (strong) EVECharacterIdToName *charIdToName;
-//@property (strong) EVECharacterInfo *characterInfo;
-//@property (strong) EVEConquerableStationList *conquerableStations;
+@property (strong) EVEConquerableStationList *conquerableStations;
 //@property (strong) EVEFactionalWarfareGlobalStats *factionWarGlobalStats;
-//@property (strong) EVEReferenceTypes *refTypes;
-//@property (strong) EVETypeName *typeName;
 //@property (strong) EVEFactionalWarfareTopStats *factionWarTopStats;
+@property (strong) EVEReferenceTypes *refTypes;
 //@property (strong) EVESkillTree *skillTree;
+@property (strong) EVETypeName *typeName;
 
 // Map APIs
 @property (strong) EVEFactionalWarfareSystems *facWarSystems;
@@ -124,7 +124,7 @@
 @property (strong) EVESovereignty *sovereignty;
 
 // Server APIs
-//@property (strong) EVEServerStatus *serverStatus;
+@property (strong) EVEServerStatus *serverStatus;
 
 // Eve Online API Server APIs
 @property (strong) EVECallList *callList;

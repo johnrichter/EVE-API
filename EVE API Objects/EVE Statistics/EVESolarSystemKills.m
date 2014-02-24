@@ -16,7 +16,7 @@
 
 #pragma mark - Instance Methods
 
--(EVESolarSystemKills *)init
+-(instancetype)init
 {
    self = [super init];
    if (self)

@@ -179,27 +179,27 @@
                                                selector:@selector(EVEAllianceListDidLoad:)
                                                    name:NSStringFromClass([EVEAllianceList class])
                                                  object:nil];
+
+      [[NSNotificationCenter defaultCenter] addObserver:self
+                                               selector:@selector(EVECharacterNameToIdDidLoad:)
+                                                   name:NSStringFromClass([EVECharacterNameToId class])
+                                                 object:nil];
       
-//      [[NSNotificationCenter defaultCenter] addObserver:self
-//                                               selector:@selector(EVECharacterNameToIdDidLoad:)
-//                                                   name:NSStringFromClass([EVECharacterNameToId class])
-//                                                 object:nil];
-//      
+      [[NSNotificationCenter defaultCenter] addObserver:self
+                                               selector:@selector(EVECharacterInfoDidLoad:)
+                                                   name:NSStringFromClass([EVECharacterInfo class])
+                                                 object:nil];
+      
 //      [[NSNotificationCenter defaultCenter] addObserver:self
 //                                               selector:@selector(EVECharacterIdToNameDidLoad:)
 //                                                   name:NSStringFromClass([EVECharacterIdToName class])
 //                                                 object:nil];
-//      
-//      [[NSNotificationCenter defaultCenter] addObserver:self
-//                                               selector:@selector(EVECharacterInfoDidLoad:)
-//                                                   name:NSStringFromClass([EVECharacterInfo class])
-//                                                 object:nil];
-//      
-//      [[NSNotificationCenter defaultCenter] addObserver:self
-//                                               selector:@selector(EVEConquerableStationListDidLoad:)
-//                                                   name:NSStringFromClass([EVEConquerableStationList class])
-//                                                 object:nil];
-//      
+      
+      [[NSNotificationCenter defaultCenter] addObserver:self
+                                               selector:@selector(EVEConquerableStationListDidLoad:)
+                                                   name:NSStringFromClass([EVEConquerableStationList class])
+                                                 object:nil];
+      
 //      [[NSNotificationCenter defaultCenter] addObserver:self
 //                                               selector:@selector(EVEFactionalWarfareGlobalStatsDidLoad:)
 //                                                   name:NSStringFromClass([EVEFactionalWarfareGlobalStats class])
@@ -209,21 +209,21 @@
 //                                               selector:@selector(EVEFactionalWarfareTopStatsDidLoad:)
 //                                                   name:NSStringFromClass([EVEFactionalWarfareTopStats class])
 //                                                 object:nil];
-//      
+      
+      [[NSNotificationCenter defaultCenter] addObserver:self
+                                               selector:@selector(EVEReferenceTypesDidLoad:)
+                                                   name:NSStringFromClass([EVEReferenceTypes class])
+                                                 object:nil];
+     
 //      [[NSNotificationCenter defaultCenter] addObserver:self
 //                                               selector:@selector(EVESkillTreeDidLoad:)
 //                                                   name:NSStringFromClass([EVESkillTree class])
 //                                                 object:nil];
-//      
-//      [[NSNotificationCenter defaultCenter] addObserver:self
-//                                               selector:@selector(EVEReferenceTypesDidLoad:)
-//                                                   name:NSStringFromClass([EVEReferenceTypes class])
-//                                                 object:nil];
-//      
-//      [[NSNotificationCenter defaultCenter] addObserver:self
-//                                               selector:@selector(EVETypeNameDidLoad:)
-//                                                   name:NSStringFromClass([EVETypeName class])
-//                                                 object:nil];
+      
+      [[NSNotificationCenter defaultCenter] addObserver:self
+                                               selector:@selector(EVETypeNameDidLoad:)
+                                                   name:NSStringFromClass([EVETypeName class])
+                                                 object:nil];
       
       // Map APIs
       [[NSNotificationCenter defaultCenter] addObserver:self
@@ -246,11 +246,11 @@
                                                    name:NSStringFromClass([EVEFactionalWarfareSystems class])
                                                  object:nil];
       
-//      // Server APIs
-//      [[NSNotificationCenter defaultCenter] addObserver:self
-//                                               selector:@selector(EVEServerStatusDidLoad:)
-//                                                   name:NSStringFromClass([EVEServerStatus class])
-//                                                 object:nil];
+      // Server APIs
+      [[NSNotificationCenter defaultCenter] addObserver:self
+                                               selector:@selector(EVEServerStatusDidLoad:)
+                                                   name:NSStringFromClass([EVEServerStatus class])
+                                                 object:nil];
       
       [[NSNotificationCenter defaultCenter] addObserver:self
                                                selector:@selector(EVECallListDidLoad:)
@@ -297,7 +297,7 @@
    for (unsigned int num = 0; num < 1000; ++num)
    {
       NSNumber *number = [NSNumber numberWithUnsignedInt:num];
-      [typeIds addObject:[number stringValue]];
+      [typeIds addObject:number];
    }
    
 #pragma clang diagnostic pop
@@ -467,24 +467,24 @@
 //   // EVE Global APIs
    self.allianceList = [EVEAllianceList new];
    //[self.allianceList performRequest];
-//
-//   self.charNameToId = [[EVECharacterNameToId alloc] initWithNames:@[@"Minos%20Daedalus",
-//                                                                     @"Master%20DarkEnforcer"]];
-//   //[self.charNameToId queryTheApi];
-//   
-//   self.charIdToName = [[EVECharacterIdToName alloc] initWithIds:@[@91779534,
-//                                                                   @153571845]];
-//   //[self.charIdToName queryTheApi];
-//   
-//   //self.characterInfo = [[EVECharacterInfo alloc] initWithCharacterId:minosId];
-//   self.characterInfo = [[EVECharacterInfo alloc] initWithEveKeyId:keyId
-//                                                             VCode:vCode
-//                                                       CharacterId:minosId];
-//   //[self.characterInfo queryTheApi];
-//   
-//   self.conquerableStations = [EVEConquerableStationList new];
-//   //[self.conquerableStations queryTheApi];
-//   
+   
+   self.charNameToId = [[EVECharacterNameToId alloc] initWithNames:@[@"Minos Daedalus",
+                                                                     @"Master DarkEnforcer"]];
+   //[self.charNameToId performRequest];
+   
+   //self.characterInfo = [[EVECharacterInfo alloc] initWithCharacterId:minosId];
+   self.characterInfo = [[EVECharacterInfo alloc] initWithEveKeyId:keyId
+                                                             VCode:vCode
+                                                       CharacterId:minosId];
+   //[self.characterInfo performRequest];
+   
+   //   self.charIdToName = [[EVECharacterIdToName alloc] initWithIds:@[@91779534,
+   //                                                                   @153571845]];
+   //   //[self.charIdToName queryTheApi];
+   
+   self.conquerableStations = [EVEConquerableStationList new];
+   //[self.conquerableStations performRequest];
+   
 //   self.factionWarGlobalStats = [EVEFactionalWarfareGlobalStats new];
 //   //[self.factionWarGlobalStats queryTheApi];
 //   
@@ -493,18 +493,18 @@
 //   
 //   self.skillTree = [EVESkillTree new];
 //   [self.skillTree queryTheApi];
-//   
-//   self.typeName = [[EVETypeName alloc] initWithIds:typeIds];
-//   //[self.typeName queryTheApi];
-//   
-//   self.refTypes = [EVEReferenceTypes new];
-//   //[self.refTypes queryTheApi];
+
+   self.refTypes = [EVEReferenceTypes new];
+   //[self.refTypes performRequest];
+
+   self.typeName = [[EVETypeName alloc] initWithIds:typeIds];
+   //[self.typeName performRequest];
    
    // ------------------------------------------------------------------------------------
    // Map APIs
    
    self.sovereignty = [EVESovereignty new];
-   [self.sovereignty performRequest];
+   //[self.sovereignty performRequest];
    
    self.kills = [EVEKills new];
    //[self.kills performRequest];
@@ -520,9 +520,9 @@
    
    self.callList = [EVECallList new];
    //[self.callList performRequest];
-//   
-//   self.serverStatus = [EVEServerStatus new];
-//   //[self.serverStatus queryTheApi];
+   
+   self.serverStatus = [EVEServerStatus new];
+   //[self.serverStatus performRequest];
 }
 
 -(void)dealloc
@@ -783,14 +783,23 @@
    [self.xmlTextView setString:newStr];
 }
 
-//-(void)EVECharacterNameToIdDidLoad:(NSNotification *)notification
-//{
-//   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
-//   [newStr appendString:self.xmlTextView.string];
-//   [newStr appendFormat:@"%@\n", self.charNameToId];
-//   [self.xmlTextView setString:newStr];
-//}
-//
+-(void)EVECharacterNameToIdDidLoad:(NSNotification *)notification
+{
+   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
+   [newStr appendString:self.xmlTextView.string];
+   [newStr appendFormat:@"%@\n", self.charNameToId];
+   [self.xmlTextView setString:newStr];
+}
+
+
+-(void)EVECharacterInfoDidLoad:(NSNotification *)notification
+{
+   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
+   [newStr appendString:self.xmlTextView.string];
+   [newStr appendFormat:@"%@\n", self.characterInfo];
+   [self.xmlTextView setString:newStr];
+}
+
 //-(void)EVECharacterIdToNameDidLoad:(NSNotification *)notification
 //{
 //   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
@@ -798,23 +807,15 @@
 //   [newStr appendFormat:@"%@\n", self.charIdToName];
 //   [self.xmlTextView setString:newStr];
 //}
-//
-//-(void)EVECharacterInfoDidLoad:(NSNotification *)notification
-//{
-//   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
-//   [newStr appendString:self.xmlTextView.string];
-//   [newStr appendFormat:@"%@\n", self.characterInfo];
-//   [self.xmlTextView setString:newStr];
-//}
-//
-//-(void)EVEConquerableStationListDidLoad:(NSNotification *)notification
-//{
-//   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
-//   [newStr appendString:self.xmlTextView.string];
-//   [newStr appendFormat:@"%@\n", self.conquerableStations];
-//   [self.xmlTextView setString:newStr];
-//}
-//
+
+-(void)EVEConquerableStationListDidLoad:(NSNotification *)notification
+{
+   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
+   [newStr appendString:self.xmlTextView.string];
+   [newStr appendFormat:@"%@\n", self.conquerableStations];
+   [self.xmlTextView setString:newStr];
+}
+
 //-(void)EVEFactionalWarfareGlobalStatsDidLoad:(NSNotification *)notification
 //{
 //   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
@@ -830,15 +831,15 @@
 //   [newStr appendFormat:@"%@\n", self.factionWarTopStats];
 //   [self.xmlTextView setString:newStr];
 //}
-//
-//-(void)EVEReferenceTypesDidLoad:(NSNotification *)notification
-//{
-//   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
-//   [newStr appendString:self.xmlTextView.string];
-//   [newStr appendFormat:@"%@\n", self.refTypes];
-//   [self.xmlTextView setString:newStr];
-//}
-//
+
+-(void)EVEReferenceTypesDidLoad:(NSNotification *)notification
+{
+   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
+   [newStr appendString:self.xmlTextView.string];
+   [newStr appendFormat:@"%@\n", self.refTypes];
+   [self.xmlTextView setString:newStr];
+}
+
 //-(void)EVESkillTreeDidLoad:(NSNotification *)notification
 //{
 //   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
@@ -846,14 +847,14 @@
 //   [newStr appendFormat:@"%@\n", self.skillTree];
 //   [self.xmlTextView setString:newStr];
 //}
-//
-//-(void)EVETypeNameDidLoad:(NSNotification *)notification
-//{
-//   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
-//   [newStr appendString:self.xmlTextView.string];
-//   [newStr appendFormat:@"%@\n", self.typeName];
-//   [self.xmlTextView setString:newStr];
-//}
+
+-(void)EVETypeNameDidLoad:(NSNotification *)notification
+{
+   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
+   [newStr appendString:self.xmlTextView.string];
+   [newStr appendFormat:@"%@\n", self.typeName];
+   [self.xmlTextView setString:newStr];
+}
 
 #pragma mark - Map API Did Load Functions
 -(void)EVESovereigntyDidLoad:(NSNotification *)notification
@@ -897,13 +898,13 @@
    [self.xmlTextView setString:newStr];
 }
 
-//-(void)EVEServerStatusDidLoad:(NSNotification *)notification
-//{
-//   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
-//   [newStr appendString:self.xmlTextView.string];
-//   [newStr appendFormat:@"%@\n", self.serverStatus];
-//   [self.xmlTextView setString:newStr];
-//}
+-(void)EVEServerStatusDidLoad:(NSNotification *)notification
+{
+   NSMutableString *newStr = [NSMutableString stringWithString:@"\n"];
+   [newStr appendString:self.xmlTextView.string];
+   [newStr appendFormat:@"%@\n", self.serverStatus];
+   [self.xmlTextView setString:newStr];
+}
 
 @end
 

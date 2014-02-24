@@ -19,13 +19,9 @@
       self.characterName = @"";
       self.corporationId = @0;
       self.corporationName = @"";
+   }
 
-      return self;
-   }
-   else
-   {
-      return nil;
-   }
+   return self;
 }
 
 -(void)configureObjectDescriptor
@@ -34,7 +30,9 @@
    [self.objectDescriptor setObjectAttributeProperties:@{@"characterID":@"characterId",
                                                          @"characterName":@"characterName",
                                                          @"corporationID":@"corporationId",
-                                                         @"corporationName":@"corporationName"}];
+                                                         @"corporationName":@"corporationName",
+                                                         // Certain API's use this element name
+                                                         @"name":@"characterName"}];
 }
 
 -(NSString *)description
