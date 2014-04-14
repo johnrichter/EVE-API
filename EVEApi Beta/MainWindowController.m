@@ -466,7 +466,7 @@
 //   // ------------------------------------------------------------------------------------
 //   // EVE Global APIs
    self.allianceList = [EVEAllianceList new];
-   //[self.allianceList performRequest];
+   [self.allianceList performRequest];
    
    self.charNameToId = [[EVECharacterNameToId alloc] initWithNames:@[@"Minos Daedalus",
                                                                      @"Master DarkEnforcer"]];
