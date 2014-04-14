@@ -58,6 +58,30 @@ Additional Resources
 
 I have been toying with, planning, and designing this project for more than one year.  About one year ago (once I got back into the game post college) I started to develop this project.  It was a great way for me to get into the Mac/iOS ecosystem and learn new technologies to help avoid skill atrophy.  When these products are ready to be released I am going to focus on creating beautiful, modern websites using the newest web technologies to host each project in addition to the Apple App Store.  I am very driven and beyond excited to have my personal ideas and hard work available and distributed to such an amazing group of players that make up EVE Online.
 
+## How to use
+
+Currently the 'library' is being built as an executable for ease of quick testing.  In near future unit tests will be created for each object and function that makes up EVE API, but until then we can query the APIs and manually verify the results.
+
+In ```/EVEApi Beta/MainWindowController.m``` there are 3 sections that run the program. Each section is defined below.
+
+**Note:** There is a lot of commented out code.  This version of EVE API is being refactored for use with the XMLKit2 update that I did near the start of 2014.  This update made the code much cleaner, easier to read, and initiated the production quality movement that is in this version, but requires some detailed modification of existing APIs and objects.  While, I am integrating one API at a time, I left all names the same and commented out all non-integrated API's that have yet to be moved over to make testing quicker and easier.  Nearly all were tested and working before migrating to XMLKit2.
+
+- ```-(id)initWithWindow:(NSWindow *)window;```
+  * This section registers the ```-(void)EVE*DidLoad``` callback functions to be called when certain EVEApi's have received and processed their data either successfully or unsuccessfully.
+- ```-(void)windowDidLoad;```
+ * This section defines what API's you will be calling and is most useful for running the program to see what it can do.  The EVE Online API server required a key ID and a verification code (vCode) to access most of the data.  Since you have to be a player to generate these IDs and vCodes I have created variables in the project that have similar names and must be matched for the call to work.  For the API's implemented in the code I have set each to use a pair that should retrieve data, but you may swap them out for other matched pairs to see what you can get.  Currently, the project is set to retrieve a list of all Alliances in the game.
+ * To change the API being called you will want to comment out the ```[api performRequest];``` message of the current one being called and uncomment another API that has the same message call.  For example: 
+```
+self.allianceList = [EVEAllianceList new];
+[self.allianceList performRequest];                    // Comment this line out
+  
+self.charNameToId = [[EVECharacterNameToId alloc] initWithNames:@[@"Minos Daedalus",
+                                                                  @"Master DarkEnforcer"]];
+//[self.charNameToId performRequest];                 // Comment this line back in
+```
+- ```-(void)EVE*DidLoad;```
+ - This section contains all the implementations of the API centric callback functions.  All of these functions use the same NSTextView when being called.  Since all of the API's call their respective URL's in an asynchronous fashion, this text view is not thread safe.  The majority of time it does work correctly when calling multiple API's at once.  This is a limitation of the test application and not the library.
+
 
 
 
