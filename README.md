@@ -1,4 +1,4 @@
-#### This project has been moved to [BitBucket](https://bitbucket.org/jrichte43/eveapi).  Perhaps one day I will remove it from here.
+#### This project has been moved to [BitBucket](https://bitbucket.org/jrichte43/eveapi).
 
 # EVE API 
 ######*An Objective-C REST library EVE Online APIs.*
