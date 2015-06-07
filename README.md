@@ -1,7 +1,7 @@
-#### This project has been moved to [BitBucket](https://bitbucket.org/jrichte43/eveapi).
+#### This project has been moved to [BitBucket](https://bitbucket.org/jrichte43/eveapi) for easier feature and bug tracking.
 
 # EVE API 
-######*An Objective-C REST library EVE Online APIs.*
+######*An Objective-C REST library for EVE Online APIs.*
 
 ## What is EVE Online?
 
@@ -9,11 +9,11 @@
 
 Players of Eve Online can participate in a number of in-game professions and activities, including mining, piracy, manufacturing, trading, exploration, and combat (both player versus environment and player versus player). The character advancement system is based upon training skills in real time, even while not logged into the game.  *--[Wikipedia](http://en.wikipedia.org/wiki/Eve_Online)*
 
+A unique characteristic of EVE Online is its meta-game.  It is common for players to spend an equal - if not more - amount of time interacting with the community out of game.  One unique play style that has manifested from this is the use of espionage to destroy alliances, break down corporations, steal Billions of ISK worth of assets, and turn the tides of war through actionable intelligence.
+
 ## Purpose
 
-EVE Online is unique in the way that it approaches its player base.  The time, energy, effort, and dedication a player must have to conquer the complex challanges is immense.  To help players with the learning and difficulty curve, CCP Games developed a detailed set of XML-based endpoints to serve as a gateway for players to plan and maintain their characters.  When combined with the [Fansite Toolkit](http://community.eveonline.com/community/fansites/toolkit) these API's can be used with data-mining and analytic techniques to recreate the in-game tools in an out-of-game setting.
-
-A special circumstance to note is that EVE Online is a heavy meta-game.  It is common for players to spend and equal amount of time interacting with the community.  A unique occurance that has manifested is the use of espionage during times of war between mega-corporations and alliances of players who own swathes of the in-game universe.
+EVE Online is unique in the way that it approaches its player base.  The time, energy, effort, and dedication a player must have is immense.  To help players with the learning curve, CCP Games developed a set of XML and JSON based endpoints to serve as a gateway for players to plan and maintain their characters.  When combined with the [Fansite Toolkit](http://community.eveonline.com/community/fansites/toolkit) these API's can be used to mine in-game data and process it to create character managing tools, build kill leaderboards for every pilot in the game, develop industrial supply chain applications for the production of any item in the game, discover market insights while trading items across the universe, and so much more.  EVE-API is meant to be the backbone of these types of applications and responsible for transforming the information obtained from the API endpoints into usable objects.
 
 Several example tools:
  - [EVE-Central: The EVE-Online Market Aggregator](http://www.eve-central.com) 
@@ -35,11 +35,16 @@ Several example tools:
 
 ## Motivation
 
-This EVE API library is not an original idea.  The most widely used, respected, and nearly *required* tool is called [EVEMon](http://evemon.battleclinic.com) and is entirely focused on character management.  It allows a player to manage every character they have across all accounts, including skill planning, finance management, 'eve-mail', asset management, and much more.  The problem with this tool is that unlike the game client itself, EVEMon is a Windows only tool.  Separate efforts have been undertaken to bring an EVEMon-like experience to the Mac only to be abandoned since creation several years ago.
+The most widely used, respected, and nearly *required* tool is called [EVEMon](http://evemon.battleclinic.com) and is entirely focused on character management.  It allows a player to manage every character they have across all accounts, including skill planning, finance management, 'eve-mail', asset management, and much more.  The problem with this tool is that unlike the game client itself, EVEMon is a Windows only tool.  Separate efforts have been undertaken to bring an EVEMon-like experience to the Mac only to be abandoned since creation several years ago.
 
-As such, this EVE API exists as a prerequesite to a new application intended to be the core of a new character management application.  In addition, another application has been planned to take advantage of the large supply of live data being delivered via these API's.  This analytical application will help answer questions such as: Is member X in corporation Y a spy for corporation Z? or: How will the past, current, or upcoming war's affect the EVE economy? These applications will target both Windows, Linux, and Mac players that want to manage their characters via the Apple desktop or laptop devices.  Migration to the iOS environment has been planned, but not designed.
+EVE API began during the period of time when I was playing solely on a Macbook Pro and wanted a tool that did what EVEMon does on Windows.  But as this project grew and my interests changed, the motivation for EVE-Api drastically pivoted towards the development of a tool to give me the edge I needed for trading items on the open market.  The Bloomberg Terminal for EVE Online.  I had always struggled to earn the money I needed to play the game the way that I wanted.  I was dead set on building a industrial and trading empire to become a multi-billionaire.
 
-This Objective-C libraray is intended to be free, distributed, and used with other third party Mac tools developed by the EVE Online player base.
+This Objective-C library is intended to be free, distributed, and used with other third party Mac tools developed by the EVE Online player base.
+
+## Unplanned - but cool - Use Cases
+Build an analytical framework using EVEApi to answer open ended questions: 
+* 'Is member X in corporation Y a spy for corporation Z'
+* 'How will the past, current, or upcoming war's affect the EVE economy?'
 
 ## The API
 
@@ -54,11 +59,7 @@ Additional Resources
  - [EVE Technology and Research Center](https://forums.eveonline.com/default.aspx?g=topics&f=263)
  - [Official EVE API Documentation (incomplete)](https://wiki.eveonline.com/en/wiki/EVE_API_Functions)
 
-**Note:** CCP Games has been continually been developing a complete JSON REST interface for all APIs.  Only very limited tests have been enabled for short periods of time.  It is the goal of this project to handle the current way (XML) and the future way (JSON) including receiving **and** sending data, which is not currently supported by CCP Games. 
-
-## Backstory
-
-I have been toying with, planning, and designing this project for more than one year.  About one year ago (once I got back into the game post college) I started to develop this project.  It was a great way for me to get into the Mac/iOS ecosystem and learn new technologies to help avoid skill atrophy.  When these products are ready to be released I am going to focus on creating beautiful, modern websites using the newest web technologies to host each project in addition to the Apple App Store.  I am very driven and beyond excited to have my personal ideas and hard work available and distributed to such an amazing group of players that make up EVE Online.
+**Note:** CCP Games has been continually been developing a complete JSON REST interface for all APIs.  Only very limited tests have been enabled for short periods of time.  It is the goal of this project to handle the current way (XML) and the future way (JSON) including receiving **and** sending data (which is not currently supported by CCP Games). 
 
 ## How to use
 
@@ -83,8 +84,3 @@ self.charNameToId = [[EVECharacterNameToId alloc] initWithNames:@[@"Minos Daedal
 ```
 - ```-(void)EVE*DidLoad;```
  - This section contains all the implementations of the API centric callback functions.  All of these functions use the same NSTextView when being called.  Since all of the API's call their respective URL's in an asynchronous fashion, this text view is not thread safe.  The majority of time it does work correctly when calling multiple API's at once.  This is a limitation of the test application and not the library.
-
-
-
-
-
